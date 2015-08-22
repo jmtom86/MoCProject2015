@@ -12,6 +12,6 @@ app.use(bodyParser.urlencoded({
 require('./config/mongoose');
 require('./config/routes')(app);
 
-app.listen(8787, function () {
-  console.log('bucket list listening on port 8787');
+app.listen(8000, function () {
+  console.log('MoC listening on port 8000');
 })
