@@ -1,0 +1,10 @@
+{
+  "name": "MoCProject2015",
+  "version": "0.0.1",
+  "description": "allow users to share their volunteer work and get sponsors for their service",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.2",
+  }
+}
