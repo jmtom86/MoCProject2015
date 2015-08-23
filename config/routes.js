@@ -15,6 +15,12 @@ module.exports = function(app) {
     console.log(req.body);
     users.addUser(req, res);
   })
+  app.get('/getUserInfo', function(req, res) {
+    users.getUserInfo(req, res);
+  })
+  // app.get('/getUserInfo/:id', function(req, res) {
+  //   question.getUserInfo(req, res);
+  // })
 
 
 }
