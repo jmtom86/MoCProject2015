@@ -1,49 +1,69 @@
-ourApp.controller('usersController', function ($scope, $location, $routeParams, mainFactory) {
-    var userdata = {};
 
-    $scope.mainpageUsers = {};
-    mainFactory.getallUsers(function(data) {
-        $scope.mainpageUsers = data;
-    })
+ourApp.controller('dashboardController', function($scope, $location, $routeParams, mainFactory){
+    $scope.userdata = {};
 
     $scope.tasksCompleted = [];
     $scope.completedMessage = '';
     $scope.upcomingMessage = '';
     $scope.tasksUpcoming = [];
     $scope.totalHours = {};
-
-    $scope.topVolunteers = {};
-    mainFactory.getTopVolunteers(function(data){
-        $scope.topVolunteers = data;
-        console.log("TOP", $scope.topVolunteers);
-    })
-
-
-    mainFactory.getUserInfo(function(data) {
+    $scope.message = '';
+    console.log("ROUTE PARAMS", $routeParams.id);
+    mainFactory.getUserInfo($routeParams.id, function(data) {
+        console.log("GOT DATA", data);
         $scope.userdata = data;
-        mainFactory.getAllTasks($scope.userdata._id, function(data){
-            // console.log(data);
-            for(x of data){
+        mainFactory.getAllTasks($scope.userdata._id, function(tasks){
+            var completed = [];
+            for(x of tasks){
                 if(x.completion == false)
                     $scope.tasksUpcoming.push(x);
-                else
+                else{
                     $scope.tasksCompleted.push(x);
+                    completed.push(x);
+                }
+                    
             }
             // console.log($scope.tasksCompleted);
             if($scope.tasksUpcoming.length == 0)
                 $scope.upcomingMessage = "No Upcoming Tasks!";
-            if($scope.tasksCompleted.length == 0)
+            if($scope.tasksCompleted.length == 0){
                 $scope.completedMessage = "No Tasks Completed!";
-            for(var i = 0; i < $scope.tasksCompleted; i++){
-                $scope.tasksCompleted[i].total = 0;
-                mainFactory.getTotalOne($scope.userdata._id, $scope.tasksCompleted[i], function(totals){
+                $scope.totalHours[0] = {};
+                $scope.totalHours[0].count = 0;
+            }
+                
+            console.log("COMPLETED" ,$scope.tasksCompleted);
+            for(var i = 0; i < completed.length; i++){
+                completed[i].total = 0;
+                console.log("LOOP" ,completed[i]);
+                mainFactory.getTotalOne($scope.userdata._id, completed[i], function(totals){
+                    console.log("IN HERE");
                 });
+                console.log(completed[i]);
             }
         })
         mainFactory.getHoursId($scope.userdata._id, function(data){
             $scope.totalHours = data;
         })
     })
+})
+
+
+ourApp.controller('usersController', function ($scope, $location, $routeParams, mainFactory) {
+    $scope.userdata = {};
+    $scope.tasksCompleted = [];
+    $scope.completedMessage = '';
+    $scope.upcomingMessage = '';
+    $scope.tasksUpcoming = [];
+    $scope.totalHours = {};
+    $scope.topVolunteers = {};
+    $scope.logged = false;
+    mainFactory.getTopVolunteers(function(data){
+        $scope.topVolunteers = data;
+        console.log("TOP", $scope.topVolunteers);
+    })
+
+    
 
     $scope.addUser = function() {
         $scope.newUser.number = $('#newUserNumber').val();
@@ -61,6 +81,7 @@ ourApp.controller('usersController', function ($scope, $location, $routeParams, 
             $scope.logUser = {};
             if (data) {
                 mainFactory.setUser(data);
+                $scope.userData = data;
                 $('#login-modal').modal('hide');
                 $location.path('/userdashboard/'+data._id)
             }

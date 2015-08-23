@@ -1,4 +1,4 @@
-<div ng-controller="usersController">
+<div ng-controller="dashboardController">
     <header class="headeruser navbar-fixed-top">
         <div class="container">
             <h1 class="logo pull-left">
@@ -32,8 +32,8 @@
         <h2 class="userheaders">Hello {{userdata.name}}!</h2>
         <h4>User Profile</h4>
         <p>Total Hours: {{totalHours[0].count}}</p>
-        <p>Total $ Raised: $111</p>
-        <p>Total $ Donated: $111</p>
+        <p>Total Money Raised: $111</p>
+        <p>Total Money Donated: $111</p>
         <div class="container">
             <div class="row">
                 <div class="item col-md-12 col-sm-12 col-xs-12">
@@ -52,7 +52,7 @@
                             <tbody>
                                 <tr ng-repeat="task in tasksUpcoming | orderBy: 'task.task.date'">
                                     <td>{{task.task.title}}</td>
-                                    <td>Clean Environment</td>
+                                    <td>{{task.charity.name}}</td>
                                     <td>{{task.task.date | date: 'short'}}</td>
                                     <td><button class="actionbtn btn btn-cta-primary">Donate</button>  <button class="actionbtn btn btn-cta-primary">Remove</button></td>
                                 </tr>
@@ -81,15 +81,15 @@
                             <tbody>
                                 <tr ng-repeat="task in tasksCompleted | orderBy: 'task.task.date'">
                                     <td>{{task.task.title}}</td>
-                                    <td>Red Cross</td> 
+                                    <td>{{task.charity.name}}</td> 
                                     <td>{{task.task.date | date: 'short'}}</td> 
                                     <td>{{task.hours}}</td> 
-                                    <td>$ 200</td> 
+                                    <td>$ {{task.total}}</td> 
                                 </tr>
                                 
                             </tbody>
                         </table>
-                        <h3 class="text-center" ng-bind="completedMessage"></h3>
+                        <h3 class="end text-center" ng-bind="completedMessage"></h3>
                     </div>
                 </div>
             </div>

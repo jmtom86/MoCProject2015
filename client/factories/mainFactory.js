@@ -24,6 +24,7 @@ ourApp.factory('mainFactory', function ($http) {
     user = userdata;
   }
 
+
   factory.addDonation = function(info, callback) {
     // console.log("here: ", info);
     $http.post('/addDonation', info).success(function(data) {
@@ -32,14 +33,19 @@ ourApp.factory('mainFactory', function ($http) {
     });
   }
 
+
+  factory.getUser = function(callback){
+  	callback(user);
+  }
+
   factory.getCharities = function(callback) {
     $http.get('/getCharities').success(function(output) {
         charities = output;
         callback(charities);
     })
   }
-  factory.getUserInfo = function(callback) {
-    $http.get('/getUserInfo').success(function(output) {
+  factory.getUserInfo = function(id, callback) {
+    $http.get('/getUserInfo/'+id).success(function(output) {
         users = output;
         callback(users);
     })
@@ -64,6 +70,20 @@ ourApp.factory('mainFactory', function ($http) {
 
   factory.getVolunteers = function(id, callback){
   	$http.get('/volunteers/'+id).success(function(output){
+  		callback(output);
+  	})
+  }
+
+  factory.getTotalOne = function(id, task, callback){
+  	$http.get('/gettotalone/'+id+'/'+task._id).success(function(output){
+  		console.log("TASK", task);
+  		console.log("OUTPUt", output);
+  		var sum = 0;
+  		for(x in output){
+  			sum += output[x].pledge * task.hours;
+  		}
+  		task.total = sum;
+  		console.log("TASK", task);
   		callback(output);
   	})
   }
