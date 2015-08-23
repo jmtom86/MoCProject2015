@@ -26,6 +26,11 @@ ourApp.controller('usersController', function($scope, $routeParams, mainFactory)
                 $scope.upcomingMessage = "No Upcoming Tasks!";
             if($scope.tasksCompleted.length == 0)
                 $scope.completedMessage = "No Tasks Completed!";
+            for(var i = 0; i < $scope.tasksCompleted; i++){
+                $scope.tasksCompleted[i].total = 0;
+                mainFactory.getTotalOne($scope.userdata._id, $scope.tasksCompleted[i], function(totals){
+                });
+            }
         })
         mainFactory.getHoursId($scope.userdata._id, function(data){
             $scope.totalHours = data;

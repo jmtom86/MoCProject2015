@@ -50,4 +50,8 @@ module.exports = function(app) {
   app.get('/topvolunteers', function(req, res){
     users.getTopVolunteers(req, res);
   })
+
+  app.get('/gettotalone/:id/:task', function(req, res){
+    users.getRaisedTotalOne(req, res);
+  })
 }
