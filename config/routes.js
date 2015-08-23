@@ -26,4 +26,12 @@ module.exports = function(app) {
   app.post('/digits', function (req, res) {
     digits.authenticate(req, res);
   });
+
+  app.get('/gettask/:id', function(req,res){
+    users.getTask(req, res);
+  })
+
+  app.get('/volunteers/:id', function(req, res){
+    users.getVolunteers(req, res);
+  })
 }

@@ -29,6 +29,11 @@
     </header>
     <div class="container">
         <h2 class="userheaders" ng-bind="charityInfo.name"></h2>
+        <h4>Info:</h4>
+        <h5>Email: {{charityInfo.email}}</h5>
+        <h5>Phone Number: {{charityInfo.number}}</h5>
+        <h5>Description: </h5>
+        <p>{{charityInfo.description}}</p>
         <div class="container">
             <div class="row">
                 <div class="item col-md-12 col-sm-12 col-xs-12">
@@ -46,10 +51,10 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="task in charityUpcoming">
-                                    <td>{{task.title}}</td>
+                                    <td><a href="#/volunteers/{{task._id}}">{{task.title}}</a></td>
                                     <td>{{task.description}}</td>
-                                    <td>{{task.date}}</td>
-                                    <td><button ng-click="volClicked(task._id)" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#volModal">Volunteer</button><button type="button" class="btn btn-info btn-sm">Donate</button></td>
+                                    <td>{{task.date | date:'short'}}</td>
+                                    <td><button ng-click="volClicked(task._id)" type="button" class="actionbtn btn btn-cta-primary" data-toggle="modal" data-target="#volModal">Volunteer</button><button type="button" ng-click="volPage(task._id)" class="actionbtn btn btn-cta-primary">Donate</button></td>
                                 </tr>
 
                             </tbody>
@@ -74,9 +79,9 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="task in charityCompleted">
-                                    <td>{{task.title}}</td>
+                                    <td><a href="#/volunteers/{{task._id}}">{{task.title}}</a></td>
                                     <td>{{task.description}}</td>
-                                    <td>{{task.date}}</td>
+                                    <td>{{task.date | date:'shortDate'}}</td>
                                 </tr>
                             </tbody>
                         </table>
