@@ -33,7 +33,7 @@
         <h5>Description: </h5>
         <p>{{task.description}}</p>
      <!--    <p>{{charities}}</p> -->
-        
+
         <h3 class="volunteerheader">Volunteers</h3>
      <!--    <p>{{charities}}</p> -->
         <div class="container">
@@ -51,15 +51,23 @@
                             </thead>
 
                             <tbody>
-                                <tr ng-repeat="volunteer in volunteers">
+                                <!-- <tr ng-repeat="volunteer in volunteers">
                                     <td><a href="">{{volunteer.user.name}}</a></td>
                                     <td>{{volunteer.user.email}}</td>
                                     <td ng-show="volunteer.completion == false"></td>
                                     <td ng-show="volunteer.completion == true">{{volunteer.hours}}</td>
                                     <td>$ 122</td>
                                     <td ng-show="task.completion == false"><button class="actionbtn btn btn-cta-primary">Donate</button>  <button class="actionbtn btn btn-cta-primary">Remove</button></td>
+                                </tr> -->
+                                <tr>
+                                    <td>dfg</td>
+                                    <td>dfsg</td>
+                                    <td>sfg</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td><button type="button" class="actionbtn btn btn-cta-primary" data-toggle="modal" data-target="#donateModal">Donate</button><button class="actionbtn btn btn-cta-primary">Remove</button></td>
                                 </tr>
-                                
+
                             </tbody>
                         </table>
                     </div>
@@ -67,6 +75,25 @@
             </div>
         </div>
 
+    </div>
+    <div id="donateModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">You've chosen to Donate!</h4>
+          </div>
+          <div class="modal-body">
+            <p>Donation Steps</p>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" ng-click="volPage(taskId)" class="btn btn-default">Yes</button> -->
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
     </div>
 </div>
 
