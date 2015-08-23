@@ -256,9 +256,7 @@ ourApp.controller('taskController', function($scope, $location, $routeParams, ma
                 mainFactory.getTotal(volunteers[i]._id, volunteers[i], function(totals){
                 });
 
-
-            }
-            $scope.volunteers = volunteers;
+                $scope.volunteers = volunteers;
 
                 console.log("AFTER LOOP", $scope.volunteers);
 

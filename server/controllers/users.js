@@ -18,7 +18,6 @@ module.exports = (function() {
             }
           })
         },
-<<<<<<< HEAD
         loginUser: function(req, res) {
           console.log(req.body);
           User.findOne(req.body, function(err, results) {
