@@ -31,7 +31,7 @@
     <div class="container">
         <h2 class="userheaders">Hello {{userdata.name}}!</h2>
         <h4>User Profile</h4>
-        <p>Total Hours: 111</p>
+        <p>Total Hours: {{totalHours[0].count}}</p>
         <p>Total $ Raised: $111</p>
         <p>Total $ Donated: $111</p>
         <div class="container">
@@ -50,14 +50,15 @@
 
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Clean Beach akfbjqek fbqkwefbjwhebfhjwe bfhjwefbajwef</td>
+                                <tr ng-repeat="task in tasksUpcoming | orderBy: 'task.task.date'">
+                                    <td>{{task.task.title}}</td>
                                     <td>Clean Environment</td>
-                                    <td>Aug 11th 2015</td>
+                                    <td>{{task.task.date | date: 'short'}}</td>
                                     <td><button class="actionbtn btn btn-cta-primary">Donate</button>  <button class="actionbtn btn btn-cta-primary">Remove</button></td>
                                 </tr>
                             </tbody>
                         </table>
+                        <h3 class="text-center" ng-bind="upcomingMessage"></h3>
                     </div>
                 </div>
             </div>
@@ -78,23 +79,17 @@
                                 
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Donate Blood</td>
+                                <tr ng-repeat="task in tasksCompleted | orderBy: 'task.task.date'">
+                                    <td>{{task.task.title}}</td>
                                     <td>Red Cross</td> 
-                                    <td>Aug 5th 2015</td> 
-                                    <td>3</td> 
+                                    <td>{{task.task.date | date: 'short'}}</td> 
+                                    <td>{{task.hours}}</td> 
                                     <td>$ 200</td> 
-                                </tr>
-                                <tr>
-                                    <td>Feed Homeless</td>
-                                    <td>Food Bank</td> 
-                                    <td>Aug 1st 2015</td> 
-                                    <td>4</td> 
-                                    <td>$ 150</td> 
                                 </tr>
                                 
                             </tbody>
                         </table>
+                        <h3 class="text-center" ng-bind="completedMessage"></h3>
                     </div>
                 </div>
             </div>
