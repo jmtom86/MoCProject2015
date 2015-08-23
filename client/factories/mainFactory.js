@@ -35,6 +35,8 @@ ourApp.factory('mainFactory', function ($http) {
 
 
   factory.getUser = function(callback){
+  	console.log("BLAH");
+  	console.log("FACTORY", user);
   	callback(user);
   }
 

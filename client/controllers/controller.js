@@ -208,6 +208,11 @@ ourApp.controller('usersController', function ($scope, $location, $routeParams, 
 })
 ourApp.controller('charityController', function ($scope, mainFactory) {
     $scope.charities = [];
+    $scope.user = {};
+    mainFactory.getUser(function(data){
+        $scope.user = data;
+        console.log("CHARITY CONTROL", $scope.user);
+    })
 
     mainFactory.getCharities(function(data) {
         for (i in data) {
@@ -228,6 +233,11 @@ ourApp.controller('tasksController', function($scope, $location, $routeParams, m
     $scope.charityUpcoming = [];
     $scope.charityInfo = {};
     $scope.taskId = [];
+    $scope.user = {};
+
+    mainFactory.getUser(function(data){
+        $scope.user = data;
+    })
     mainFactory.getOneCharity($routeParams.id, function(data) {
         $scope.charityInfo = data;
         for (i of data.tasks) {
@@ -261,10 +271,14 @@ ourApp.controller('taskController', function($scope, $location, $routeParams, ma
     $scope.volunteers = [];
     $scope.message = '';
     $scope.allDonations = [];
+    $scope.user = {};
 
     $scope.user_taskID = [];
     console.log($scope.taskId);
-
+    mainFactory.getUser(function(data){
+        $scope.user = data;
+        console.log("USER", $scope.user);
+    })
     mainFactory.getTask($routeParams.id, function(task){
         $scope.task = task;
         // console.log($scope.task);

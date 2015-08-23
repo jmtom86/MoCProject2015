@@ -52,7 +52,7 @@
 
 #upcoming td, #completed td, #charities td, #volunteers td, #upcomingc td, #completedc td{
 	width: 330px;
-	padding-right: 60px;
+	padding-right: 50px;
 	padding-bottom: 10px;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -60,7 +60,7 @@
 }
 
 #charities td:first{
-	width: 200px;
+	width: 180px;
 }
 
 
