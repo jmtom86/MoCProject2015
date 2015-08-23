@@ -26,7 +26,7 @@
 
     // Set a click event listener on the Digits button.
     // $('#digits-button').click(onLoginButtonClick);
-    $(document).on('click', '#digits-button', onLoginButtonClick);
+    $(document).on('click', '.digits-button', onLoginButtonClick);
   });
 
   /**
@@ -35,6 +35,7 @@
   function onLoginButtonClick(event) {
     console.log('Digits login started.');
     Digits.logIn().done(onLogin).fail(onLoginFailure);
+    return false;
   }
 
   /**
@@ -71,6 +72,7 @@
   function onDigitsSuccess(response) {
     console.log('Digits phone number retrieved.')
     console.log(response);
+    $('#newUserNumber').val(response.phoneNumber);
     setDigitsNumber(response.phoneNumber);
   }
 
@@ -91,11 +93,11 @@
 
   // Set the Digits button label (and make sure it is not disabled).
   function setDigitsButton(text) {
-    $('#digits-button').text(text).removeAttr('disabled');
+    $('.digits-button').text(text).removeAttr('disabled');
   }
 
   // Set the Digits phone number (and disable the button).
   function setDigitsNumber(phoneNumber) {
-    $('#digits-button').text(phoneNumber).attr('disabled', 'disabled');
+    $('.digits-button').text(phoneNumber).attr('disabled', 'disabled');
   }
 })();

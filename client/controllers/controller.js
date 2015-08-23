@@ -8,8 +8,8 @@ ourApp.controller('usersController', function($scope, $routeParams, mainFactory)
     $scope.addUser = function() {
         // console.log($scope.newUser);
         mainFactory.addUser($scope.newUser, function(data) {
+            $scope.newUser = {};
         });
-        $scope.newUser = {};
     }
 
 })

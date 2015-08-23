@@ -63,6 +63,7 @@
                 <div class="modal-footer">
               <div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                <button class="btn btn-info btn-lg btn-block digits-button">Login with Phone</button>
               </div>
                     <div>
                 <button id="login_register_btn" type="button" class="btn btn-link">Register</button>
@@ -78,13 +79,15 @@
                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
                 <span id="text-register-msg">Register an account.</span>
               </div>
-                        <input id="register_username" class="form-control" type="text" placeholder="Username" required>
-              <input id="register_email" class="form-control" type="text" placeholder="E-Mail" required>
-              <input id="register_password" class="form-control" type="password" placeholder="Password" required>
+                <input id="register_username" class="form-control" type="text" ng-model="newUser.name" placeholder="Name" required>
+              <input id="register_email" class="form-control" type="email" placeholder="E-Mail" ng-model="newUser.email" required>
+              <input id="register_password" class="form-control" type="password" placeholder="Password" ng-model="newUser.password" required>
+              <input id="newUserNumber" type="hidden" ng-model="newUser.number">
                 </div>
                 <div class="modal-footer">
               <div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+                <button ng-click="addUser()" type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+                <button class="btn btn-info btn-lg btn-block digits-button">Register with Phone</button>
               </div>
               <div>
                 <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
