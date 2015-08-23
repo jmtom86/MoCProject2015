@@ -89,12 +89,12 @@
     };
   }
 
-  Set the Digits button label (and make sure it is not disabled).
+  // Set the Digits button label (and make sure it is not disabled).
   function setDigitsButton(text) {
     $('#digits-button').text(text).removeAttr('disabled');
   }
 
-  Set the Digits phone number (and disable the button).
+  // Set the Digits phone number (and disable the button).
   function setDigitsNumber(phoneNumber) {
     $('#digits-button').text(phoneNumber).attr('disabled', 'disabled');
   }
