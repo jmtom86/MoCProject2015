@@ -12,14 +12,12 @@ module.exports = function(app) {
   })
 
   app.post('/addUser', function(req, res) {
-    console.log(req.body);
     users.addUser(req, res);
   })
-  // app.get('/getUserInfo', function(req, res) {
-  //   users.getUserInfo(req, res);
-  // })
+  app.get('/getOneCharity/:id', function(req, res) {
+    users.getOneCharity(req, res);
+  })
   app.get('/getCharities', function(req, res) {
-    console.log("routes");
     users.getCharities(req, res);
   })
   app.get('/getUserInfo', function(req, res) {

@@ -15,6 +15,7 @@ var TasksSchema = new mongoose.Schema({
 	title: String,
 	description: String,
 	done: Boolean,
+	date: Date,
 	created_at: {type: Date, default: new Date},
 	updated_at: {type: Date, default: new Date},
 })

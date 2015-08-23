@@ -13,10 +13,13 @@ ourApp.config( function ($routeProvider) {
     })
     .when('/volunteers', {
       templateUrl: '/partials/volunteers.html'
-    }) 
+    })
     // .when('/user/:id', {
     //   templateUrl: '/partials/user.html'
     // })
+    .when('/charityTasks/:id', {
+      templateUrl: '/partials/charitytasks.html'
+    })
     .otherwise({
       redirectTo: '/mainpage'
     });

@@ -6,7 +6,7 @@ ourApp.controller('usersController', function($scope, $routeParams, mainFactory)
     })
 
     $scope.addUser = function() {
-        console.log($scope.newUser);
+        // console.log($scope.newUser);
         mainFactory.addUser($scope.newUser, function(data) {
         });
         $scope.newUser = {};
@@ -17,10 +17,8 @@ ourApp.controller('charityController', function($scope, mainFactory) {
     $scope.charities = [];
 
     mainFactory.getCharities(function(data) {
-        // console.log(data);
         for (i in data) {
             data[i].count = 0
-            console.log(data[i].tasks[i].completion);
             for (x in data[i].tasks) {
                 if (data[i].tasks[x].completion == false) {
                     data[i].count++;
@@ -29,6 +27,21 @@ ourApp.controller('charityController', function($scope, mainFactory) {
         }
         $scope.charities = data;
     })
+})
+ourApp.controller('tasksController', function($scope, $routeParams, mainFactory) {
+    $scope.charityCompleted = [];
+    $scope.charityUpcoming = [];
+    $scope.charityInfo = [];
+    mainFactory.getOneCharity($routeParams.id, function(data) {
+        $scope.charityInfo = data;
+        for (i of data.tasks) {
+            if (i.completion == false) {
+                $scope.charityUpcoming.push(i);
+            } else {
+                $scope.charityCompleted.push(i)
+            }
 
-
+        }
+        // $scope.charityCompleted = data;
+    })
 })

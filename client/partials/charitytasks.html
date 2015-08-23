@@ -1,0 +1,34 @@
+<div ng-controller="tasksController">
+    <h2>{{charityInfo.name}}</h2>
+    <h4>Tasks Upcoming</h4>
+    <table ng-repeat="task in charityUpcoming">
+        <thead>
+
+            <td>Title</td>
+            <td>Description</td>
+            <td>Date</td>
+            <td>Actions</td>
+        </thead>
+        <tbody>
+            <td>{{task.title}}</td>
+            <td>{{task.description}}</td>
+            <td>{{task.date}}</td>
+            <td><a href="">Volunteer</a><a href="">Donate</a></td>
+        </tbody>
+    </table>
+    <h4>Tasks Completed</h4>
+    <table ng-repeat="task in charityCompleted">
+        <thead>
+            <td>Title</td>
+            <td>Description</td>
+            <td>Date</td>
+
+        </thead>
+        <tbody>
+            <td>{{task.title}}</td>
+            <td>{{task.description}}</td>
+            <td>{{task.date}}</td>
+        </tbody>
+    </table>
+
+</div>
