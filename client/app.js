@@ -12,6 +12,6 @@ ourApp.config( function ($routeProvider) {
     //   templateUrl: '/partials/user.html'
     // })
     .otherwise({
-      redirectTo: '/index'
+      redirectTo: '/mainpage'
     });
 });

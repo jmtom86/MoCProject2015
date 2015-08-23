@@ -1,4 +1,4 @@
-.panel-login {
+/*.panel-login {
 	border-color: #ccc;
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
@@ -93,11 +93,15 @@
 	color: #fff;
 	background-color: #1CA347;
 	border-color: #1CA347;
-}
+}*/
 
 table {
 	/*border-spacing: 10px;*/
   counter-reset: serial-number;  /* Set the serial number counter to 0 */
+}
+
+th {
+	padding-bottom: 20px;
 }
 
 td ,th{
