@@ -230,6 +230,9 @@ ourApp.controller('tasksController', function($scope, $location, $routeParams, m
 })
 
 ourApp.controller('taskController', function($scope, $location, $routeParams, mainFactory){
+
+    
+
     $scope.taskId = $routeParams.id;
     $scope.task = {};
     $scope.volunteers = [];
@@ -288,37 +291,81 @@ ourApp.controller('taskController', function($scope, $location, $routeParams, ma
         $scope.newDonation.user_taskID = id;
         mainFactory.addDonation($scope.newDonation, function(data) {
                 mainFactory.getTask($routeParams.id, function(task){
-        $scope.task = task;
-        console.log($scope.task);
-        mainFactory.getVolunteers($routeParams.id, function(volunteers){
-            $scope.volunteers = volunteers;
-            if(volunteers.length == 0){
-                // console.log("NONE");
-                $scope.message = "No Volunteers Yet!";
-                console.log($scope.message);
-            }
-            console.log("VOLUNTEERS", $scope.volunteers);
-            for(var i = 0; i < $scope.volunteers.length; i++){
-                console.log($scope.volunteers[i]);
-                $scope.volunteers[i].total = mainFactory.getTotal($scope.volunteers[i]._id, $scope.volunteers[i], function(totals){
-                    // for(var y = 0; y < totals.length; y++){
-                    //     console.log("VOLUNTEER - ", volunteers[i])
-                    //     $scope.volunteers[i].total += $scope.volunteers[i].hours * total[y].pledge;
-                    // }
-                });
-                console.log("AFTER LOOP", $scope.volunteers);
+                $scope.task = task;
+                console.log($scope.task);
+                mainFactory.getVolunteers($routeParams.id, function(volunteers){
+                    $scope.volunteers = volunteers;
+                    if(volunteers.length == 0){
+                        // console.log("NONE");
+                        $scope.message = "No Volunteers Yet!";
+                        console.log($scope.message);
+                    }
+                    console.log("VOLUNTEERS", $scope.volunteers);
+                    for(var i = 0; i < $scope.volunteers.length; i++){
+                        console.log($scope.volunteers[i]);
+                        $scope.volunteers[i].total = mainFactory.getTotal($scope.volunteers[i]._id, $scope.volunteers[i], function(totals){
+                            // for(var y = 0; y < totals.length; y++){
+                            //     console.log("VOLUNTEER - ", volunteers[i])
+                            //     $scope.volunteers[i].total += $scope.volunteers[i].hours * total[y].pledge;
+                            // }
+                        });
+                        console.log("AFTER LOOP", $scope.volunteers);
 
-            }
+                    }
+                })
 
-
-
-        })
-
-    })
+            })
         })
     }
 
-
+    $scope.simplifyResponseHandler = function (data) {
+        var $paymentForm = $("#simplify-payment-form");
+        // Remove all previous errors
+        $(".error").remove();
+        // Check for errors
+        if (data.error) {
+            // Show any validation errors
+            if (data.error.code == "validation") {
+                var fieldErrors = data.error.fieldErrors,
+                        fieldErrorsLength = fieldErrors.length,
+                        errorList = "";
+                for (var i = 0; i < fieldErrorsLength; i++) {
+                    errorList += "<div class='error'>Field: '" + fieldErrors[i].field +
+                            "' is invalid - " + fieldErrors[i].message + "</div>";
+                }
+                // Display the errors
+                $paymentForm.after(errorList);
+            }
+            // Re-enable the submit button
+            $("#process-payment-btn").removeAttr("disabled");
+        } else {
+            // The token contains id, last4, and card type
+            var token = data["id"];
+            // Insert the token into the form so it gets submitted to the server
+            $paymentForm.append("<input type='hidden' name='simplifyToken' value='" + token + "' />");
+            // Submit the form to the server
+            console.log($paymentForm.get(0));
+            // $paymentForm.get(0).submit();
+            console.log('Im so good');
+            
+        }
+    }
+        $(document).on("submit", "#simplify-payment-form", function() {
+            // Disable the submit button
+            $("#process-payment-btn").attr("disabled", "disabled");
+            // Generate a card token & handle the response
+            SimplifyCommerce.generateToken({
+                key: "sbpb_OGQ1MjRmNjktZTZhOS00YmUxLTk4NzktMDQ2M2UzMjY4MmQ5",
+                card: {
+                    number: $("#cc-number").val(),
+                    cvc: $("#cc-cvc").val(),
+                    expMonth: $("#cc-exp-month").val(),
+                    expYear: $("#cc-exp-year").val()
+                }
+            }, $scope.simplifyResponseHandler);
+            // Prevent the form from submitting
+            return false;
+        });
 
 
 })
