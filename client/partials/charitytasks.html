@@ -83,11 +83,9 @@
                                 <tr ng-repeat="task in charityCompleted">
                                     <td><a href="#/volunteers/{{task._id}}">{{task.title}}</a></td>
                                     <td>{{task.description}}</td>
-<<<<<<< HEAD
-                                    <td>{{task.date | date: 'medium'}}</td>
-=======
+
                                     <td>{{task.date | date:'shortDate'}}</td>
->>>>>>> master
+
                                 </tr>
                             </tbody>
                         </table>
