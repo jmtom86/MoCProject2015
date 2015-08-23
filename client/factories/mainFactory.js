@@ -10,12 +10,6 @@ ourApp.factory('mainFactory', function ($http) {
       callback(user);
     });
   }
-  factory.getUserInfo = function(callback) {
-    $http.get('/getUserInfo').success(function(output) {
-        users = output;
-        callback(users);
-    })
-  }
   factory.getCharities = function(callback) {
     console.log("adsfads");
     $http.get('/getCharities').success(function(output) {
@@ -23,11 +17,11 @@ ourApp.factory('mainFactory', function ($http) {
         callback(charities);
     })
   }
-  // factory.getUserInfo = function(callback) {
-  //   $http.get('/getUserInfo/'+info).success(function(output) {
-  //       users = output;
-  //       callback(users);
-  //   })
-  // }
+  factory.getUserInfo = function(callback) {
+    $http.get('/getUserInfo').success(function(output) {
+        users = output;
+        callback(users);
+    })
+  }
   return factory;
 })
