@@ -8,7 +8,6 @@ var UserSchema = new mongoose.Schema({
 	password: String,
 	created_at: {type: Date, default: new Date},
 	updated_at: {type: Date, default: new Date},
-	tasks: [{type: Schema.Types.ObjectId, ref: 'Task'}]
 })
 var TasksSchema = new mongoose.Schema({
 	_charity: {type: Schema.ObjectId, ref: 'Charity'},
@@ -37,8 +36,16 @@ var CharitiesSchema = new mongoose.Schema({
 })
 
 var UserTaskSchema = new mongoose.Schema({
-	_user: {type: Schema.ObjectId, ref:"User"},
-	_task: {type: Schema.ObjectId, ref:"Task"}
+	user: {type: Schema.ObjectId, ref:"User"},
+	task: {type: Schema.ObjectId, ref:"Task"},
+	hours: Number,
+	completion: Boolean
+})
+
+var DonationSchema = new mongoose.Schema({
+	_sponsor: {type: Schema.ObjectId, ref:"User"},
+	_usertask: {type: Schema.ObjectId, ref:"UserTask"},
+	pledge: Number
 })
 
 mongoose.model('UserTask', UserTaskSchema)

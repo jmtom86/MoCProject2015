@@ -31,7 +31,7 @@ ourApp.controller('charityController', function($scope, mainFactory) {
 ourApp.controller('tasksController', function($scope, $location, $routeParams, mainFactory) {
     $scope.charityCompleted = [];
     $scope.charityUpcoming = [];
-    $scope.charityInfo = [];
+    $scope.charityInfo = {};
     $scope.taskId = [];
     mainFactory.getOneCharity($routeParams.id, function(data) {
         $scope.charityInfo = data;
@@ -52,4 +52,20 @@ ourApp.controller('tasksController', function($scope, $location, $routeParams, m
         console.log("volPAGE: ", id);
         $location.path('/volunteers/'+id);
     }
+})
+
+ourApp.controller('taskController', function($scope, $location, $routeParams, mainFactory){
+    $scope.taskId = $routeParams.id;
+    $scope.task = {};
+    $scope.volunteers = [];
+    console.log($scope.taskId);
+    mainFactory.getTask($routeParams.id, function(data){
+        $scope.task = data;
+        console.log($scope.task);
+        mainFactory.getVolunteers($routeParams.id, function(data){
+            $scope.volunteers = data;
+            console.log("VOLUNTEERS", data);
+        })
+    })
+
 })

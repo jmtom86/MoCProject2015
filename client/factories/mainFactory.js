@@ -28,5 +28,16 @@ ourApp.factory('mainFactory', function ($http) {
         callback(oneCharity);
     })
   }
+  factory.getTask = function(id, callback){
+  	$http.get('/gettask/'+id).success(function(output){
+  		callback(output);
+  	})
+  }
+
+  factory.getVolunteers = function(id, callback){
+  	$http.get('/volunteers/'+id).success(function(output){
+  		callback(output);
+  	})
+  }
   return factory;
 })
