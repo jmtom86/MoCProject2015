@@ -1,3 +1,45 @@
+#hello {
+	margin-top: 90px;
+}
+
+
+.theads {
+	max-width: 210px;
+	padding-bottom: 10px;
+}
+
+#completed th {
+	padding-bottom: 10px;
+	width: 210px;
+}
+
+#upcoming td{
+	max-width: 300px;
+	padding-right: 60px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#upcoming td a{
+	display: inline-block;
+}
+
+#completed td{
+	width: 210px;
+
+}
+
+.actionbtn {
+	display: inline-block;
+	margin-right: 20px;
+	vertical-align: top;
+}
+
+#completed {
+	margin-bottom: 100px;
+}
+
 
 #topvolunteers {
 	/*border-spacing: 10px;*/
@@ -8,7 +50,7 @@
 	padding-bottom: 20px;
 }
 
-#topvolunteers td ,th{
+#topvolunteers td , #topvolunteers th{
 	padding-right: 70px;
 }
 
@@ -27,11 +69,100 @@
 	padding-bottom: 20px;
 }
 
-#topsponsors td ,th{
+#topsponsors td , #topsponsors th{
 	padding-right: 70px;
 }
 
 #topsponsors td:first-child:before {
   counter-increment: serial-number;  /* Increment the serial number counter */
   content: counter(serial-number);  /* Display the counter */
+}
+
+.headeruser {
+  padding: 10px 0;
+  background: #17baef;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+}
+.headeruser.navbar-fixed-top {
+  background: #17baef;
+  z-index: 9999;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+.headeruser.navbar-fixed-top .logo a {
+  color: #fff;
+}
+.headeruser.navbar-fixed-top .main-nav .nav .nav-item a {
+  color: #666666;
+}
+.headeruser .logo {
+  margin: 0;
+  font-size: 26px;
+  padding-top: 10px;
+}
+.headeruser .logo a {
+  color: #fff;
+}
+.headeruser .logo a:hover {
+  text-decoration: none;
+}
+.headeruser .main-nav button {
+  background: #074f66;
+  color: #fff !important;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.headeruser .main-nav button:focus {
+  outline: none;
+}
+.headeruser .main-nav button .icon-bar {
+  background-color: #fff;
+}
+.headeruser .main-nav .navbar-collapse {
+  padding: 0;
+}
+.headeruser .main-nav .nav .nav-item {
+  font-weight: normal;
+  margin-right: 30px;
+  font-family: 'Montserrat', sans-serif;
+}
+.headeruser .main-nav .nav .nav-item.active a {
+  color: #17baef;
+  background: none;
+}
+.headeruser .main-nav .nav .nav-item a {
+  color: #0a7396;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  font-size: 14px;
+  padding: 15px 10px;
+}
+.headeruser .main-nav .nav .nav-item a:hover {
+  color: #074f66;
+  background: none;
+}
+.headeruser .main-nav .nav .nav-item a:focus {
+  outline: none;
+  background: none;
+}
+.headeruser .main-nav .nav .nav-item a:active {
+  outline: none;
+  background: none;
+}
+.headeruser .main-nav .nav .nav-item.active {
+  color: #17baef;
+}
+.headeruser .main-nav .nav .nav-item.last {
+  margin-right: 0;
 }
