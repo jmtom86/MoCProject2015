@@ -57,10 +57,10 @@
                                     <td><a href="">{{volunteer._user.name}}</a></td>
                                     <td>{{volunteer._user.email}}</td>
 
-                                    <td ng-show="volunteer.completion == false"></td>
+                                    <td ng-show="volunteer.completion == false">3</td>
                                     <td ng-show="volunteer.completion == true">{{volunteer.hours}}</td>
                                     <td>$ {{volunteer.total}}</td>
-                                    <td ng-show="task.completion == false"><button ng-click="donateClicked(volunteer._id)" type="button" class="actionbtn btn btn-cta-primary" data-toggle="modal" data-target="#donateModal">Donate</button>  <button class="actionbtn btn btn-cta-primary">Remove</button></td>
+                                    <td ng-show="task.completion == false"><button ng-click="donateClicked(volunteer._id)" type="button" class="actionbtn btn btn-cta-primary" data-toggle="modal" data-target="#donateModal">Donate</button>  <button ng-show="volunteer._user._id == user._id"class="actionbtn btn btn-cta-primary">Remove</button></td>
                                 </tr>
 
 
