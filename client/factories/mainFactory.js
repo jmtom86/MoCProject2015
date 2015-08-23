@@ -2,6 +2,7 @@ ourApp.factory('mainFactory', function ($http) {
   var users = [];
   var mainpageUsers = [];
   var charities = [];
+  var volunteers = [];
   var oneCharity = [];
   var factory = {};
 
@@ -9,6 +10,13 @@ ourApp.factory('mainFactory', function ($http) {
     $http.post('/addUser', userdata).success(function(data) {
       user = data;
       callback(user);
+    });
+  }
+  factory.addDonation = function(info, callback) {
+    // console.log("here: ", info);
+    $http.post('/addDonation', info).success(function(data) {
+      volunteers = data;
+      callback(volunteers);
     });
   }
   factory.getCharities = function(callback) {

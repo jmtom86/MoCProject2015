@@ -40,6 +40,7 @@
             <div class="row">
                 <div class="item col-md-12 col-sm-12 col-xs-12">
                     <div class="content">
+                    <p>{{volunteers}}</p>
                         <table id="volunteers">
                             <thead>
                                 <th class="ctheads">Name</th>
@@ -51,7 +52,7 @@
                             </thead>
 
                             <tbody>
-<!--
+
                                 <tr ng-repeat="volunteer in volunteers">
                                     <td><a href="">{{volunteer._user.name}}</a></td>
                                     <td>{{volunteer._user.email}}</td>
@@ -59,16 +60,9 @@
                                     <td ng-show="volunteer.completion == false"></td>
                                     <td ng-show="volunteer.completion == true">{{volunteer.hours}}</td>
                                     <td>$ {{volunteer.total}}</td>
-                                    <td ng-show="task.completion == false"><button class="actionbtn btn btn-cta-primary">Donate</button>  <button class="actionbtn btn btn-cta-primary">Remove</button></td>
-                                </tr> -->
-                                <tr>
-                                    <td>dfg</td>
-                                    <td>dfsg</td>
-                                    <td>sfg</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td><button type="button" class="actionbtn btn btn-cta-primary" data-toggle="modal" data-target="#donateModal">Donate</button><button class="actionbtn btn btn-cta-primary">Remove</button></td>
+                                    <td ng-show="task.completion == false"><button ng-click="donateClicked(volunteer._id)" type="button" class="actionbtn btn btn-cta-primary" data-toggle="modal" data-target="#donateModal">Donate</button>  <button class="actionbtn btn btn-cta-primary">Remove</button></td>
                                 </tr>
+
 
                             </tbody>
                         </table>
@@ -88,10 +82,11 @@
             <h4 class="modal-title">You've chosen to Donate!</h4>
           </div>
           <div class="modal-body">
-            <p>Donation Steps</p>
+            <p>Donation Steps: </p>
+            <p>Pledge <input type="number" ng-model="newDonation.pledge"></p>
           </div>
           <div class="modal-footer">
-            <!-- <button type="button" ng-click="volPage(taskId)" class="btn btn-default">Yes</button> -->
+            <button type="button" ng-click="donationPage(user_taskID)" class="btn btn-default">Yes</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>

@@ -18,6 +18,16 @@ module.exports = (function() {
             }
           })
         },
+        addDonation: function(req, res) {
+          var user = new User(req.body);
+          user.save(function(err, results) {
+            if (err) {
+              console.log(err);
+            } else {
+              res.json(results);
+            }
+          })
+        },
         getallUsers: function(req, res) {
           UserTask.find({}).populate('user')
             .exec(function(err, data) {
@@ -73,13 +83,13 @@ module.exports = (function() {
           })
         },
         getVolunteers: function(req, res){
-          console.log(req.params.id);
+          console.log("task id: ", req.params.id);
           UserTask.find({task: req.params.id}).populate('_user')
           .exec(function(err, usertasks){
             if(err){
               console.log(err);
             } else {
-              console.log(usertasks);
+              console.log("CONTORLLER: ", usertasks);
               res.json(usertasks);
             }
           })

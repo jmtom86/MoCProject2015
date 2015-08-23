@@ -14,6 +14,9 @@ module.exports = function(app) {
   app.post('/addUser', function(req, res) {
     users.addUser(req, res);
   })
+  app.post('/addDonation', function(req, res) {
+    users.addDonation(req, res);
+  })
   app.get('/getOneCharity/:id', function(req, res) {
     users.getOneCharity(req, res);
   })
