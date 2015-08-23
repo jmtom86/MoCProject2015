@@ -1,16 +1,20 @@
 var nconf = require('nconf');
+var url = require('url');
 var request = require('request');
 
-module.exports = function() {
+module.exports = (function() {
   return {
     authenticate: function (req, res) {
       var apiUrl = req.body['apiUrl']
       var credentials = req.body['credentials']
       var verified = true;
       var messages = [];
+      console.log(apiUrl);
+      console.log(credentials);
+      console.log(nconf.get('DIGITS_CONSUMER_KEY'))
 
       // Verify the OAuth consumer key.
-      if (credentials.indexOf('oauth_consumer_key="' + nconf.get('DIGITS_CONSUMER_KEY') + '"') == -1) {
+      if (credentials.indexOf('oauth_consumer_key="CDKMugXuwQAg7HdEbndKe9tp5"') == -1) {
         verified = false;
         messages.push('The Digits API key does not match.');
       }
@@ -60,4 +64,5 @@ module.exports = function() {
       });
     }
   }
+})();
   

@@ -26,7 +26,6 @@ module.exports = function(app) {
     users.getUserInfo(req, res);
   })
   app.post('/digits', function (req, res) {
-    console.log('got to routes');
     digits.authenticate(req, res);
   });
 }

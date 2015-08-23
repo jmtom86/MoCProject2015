@@ -46,7 +46,7 @@
     console.log('Digits login succeeded.');
     var oAuthHeaders = parseOAuthHeaders(loginResponse.oauth_echo_headers);
 
-    // setDigitsButton('Signing In…');
+    setDigitsButton('Signing In…');
     $.ajax({
       type: 'POST',
       url: '/digits',
@@ -60,7 +60,7 @@
    */
   function onLoginFailure(loginResponse) {
     console.log('Digits login failed.');
-    // setDigitsButton('Sign In with Phone');
+    setDigitsButton('Sign In with Phone');
   }
 
   /**
@@ -70,7 +70,8 @@
    */
   function onDigitsSuccess(response) {
     console.log('Digits phone number retrieved.')
-    // setDigitsNumber(response.phoneNumber);
+    console.log(response);
+    setDigitsNumber(response.phoneNumber);
   }
 
   /**
@@ -88,13 +89,13 @@
     };
   }
 
-  // Set the Digits button label (and make sure it is not disabled).
-  // function setDigitsButton(text) {
-  //   $('#digits-button').text(text).removeAttr('disabled');
-  // }
+  Set the Digits button label (and make sure it is not disabled).
+  function setDigitsButton(text) {
+    $('#digits-button').text(text).removeAttr('disabled');
+  }
 
-  // Set the Digits phone number (and disable the button).
-  // function setDigitsNumber(phoneNumber) {
-  //   $('#digits-button').text(phoneNumber).attr('disabled', 'disabled');
-  // }
+  Set the Digits phone number (and disable the button).
+  function setDigitsNumber(phoneNumber) {
+    $('#digits-button').text(phoneNumber).attr('disabled', 'disabled');
+  }
 })();
