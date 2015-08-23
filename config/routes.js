@@ -14,8 +14,13 @@ module.exports = function(app) {
   app.post('/addUser', function(req, res) {
     users.addUser(req, res);
   })
+
   app.post('/loginUser', function(req, res) {
     users.loginUser(req, res);
+    })
+  app.post('/addDonation', function(req, res) {
+    users.addDonation(req, res);
+
   })
   app.get('/getOneCharity/:id', function(req, res) {
     users.getOneCharity(req, res);
@@ -25,6 +30,9 @@ module.exports = function(app) {
   })
   app.get('/getUserInfo', function(req, res) {
     users.getUserInfo(req, res);
+  })
+  app.get('/getallUsers', function(req, res) {
+    users.getallUsers(req, res);
   })
   app.post('/digits', function (req, res) {
     digits.register(req, res);

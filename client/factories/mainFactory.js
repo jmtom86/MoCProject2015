@@ -1,6 +1,8 @@
 ourApp.factory('mainFactory', function ($http) {
   var users = [];
+  var mainpageUsers = [];
   var charities = [];
+  var volunteers = [];
   var oneCharity = [];
   var user = {};
   var factory = {};
@@ -11,6 +13,7 @@ ourApp.factory('mainFactory', function ($http) {
       callback(user);
     });
   }
+
   factory.loginUser = function(userdata, callback) {
     $http.post('/loginUser', userdata).success(function(data) {
       user = data;
@@ -20,6 +23,15 @@ ourApp.factory('mainFactory', function ($http) {
   factory.setUser = function(userdata) {
     user = userdata;
   }
+
+  factory.addDonation = function(info, callback) {
+    // console.log("here: ", info);
+    $http.post('/addDonation', info).success(function(data) {
+      volunteers = data;
+      callback(volunteers);
+    });
+  }
+
   factory.getCharities = function(callback) {
     $http.get('/getCharities').success(function(output) {
         charities = output;
@@ -30,6 +42,12 @@ ourApp.factory('mainFactory', function ($http) {
     $http.get('/getUserInfo').success(function(output) {
         users = output;
         callback(users);
+    })
+  }
+  factory.getallUsers = function(callback) {
+    $http.get('/getallUsers').success(function(output) {
+        mainpageUsers = output;
+        callback(mainpageUsers);
     })
   }
   factory.getOneCharity = function(id, callback) {
