@@ -1,12 +1,23 @@
 <div data-spy="scroll">
     	<div id="fb-root"></div>
-	    <script>(function(d, s, id) {
-	      var js, fjs = d.getElementsByTagName(s)[0];
-	      if (d.getElementById(id)) return;
-	      js = d.createElement(s); js.id = id;
-	      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-	      fjs.parentNode.insertBefore(js, fjs);
-	    }(document, 'script', 'facebook-jssdk'));</script>
+	    <script>$(function() {
+
+    $('#login-form-link').click(function(e) {
+		$("#login-form").delay(100).fadeIn(100);
+ 		$("#register-form").fadeOut(100);
+		$('#register-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+	$('#register-form-link').click(function(e) {
+		$("#register-form").delay(100).fadeIn(100);
+ 		$("#login-form").fadeOut(100);
+		$('#login-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+
+});</script>
 	    
 	    <!-- ******HEADER****** --> 
 	    <header id="header" class="header">  
@@ -32,7 +43,7 @@
 	                        <li class="nav-item"><a class="scrollto" href="#features">Features</a></li>
 	                        <li class="nav-item"><a class="scrollto" href="#docs">Docs</a></li>
 	                        <li class="nav-item"><a class="scrollto" href="#license">License</a></li>                        
-	                        <li class="nav-item last"><a class="scrollto" href="#contact">Login</a></li>
+	                        <li class="nav-item last"><a data-toggle="modal" data-target="#login" class="scrollto" href="">Login</a></li>
 	                    </ul><!--//nav-->
 	                </div><!--//navabr-collapse-->
 	            </nav><!--//main-nav-->
@@ -49,11 +60,10 @@
 	                <a class="btn btn-cta-secondary" href="http://themes.3rdwavemedia.com/" target="_blank">Demo</a>
 	                <a class="btn btn-cta-primary" href="http://themes.3rdwavemedia.com/website-templates/devaid-free-bootstrap-theme-developers/" target="_blank">Download</a>
 	            </div>
-	            <ul class="meta list-inline">
-	                <li><a href="#" target="_blank">View on GitHub</a></li>
-	                <li><a href="https://github.com/twbs/bootstrap" target="_blank">Full Documentation</a></li>
-	                <li>Created by: <a href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> at 3rd Wave Media</li>
-	            </ul><!--//meta-->
+	            <div class="meta">
+	            	
+	            </div>
+	            
 	        </div><!--//container-->
 	        
 	    </section><!--//promo-->
@@ -61,64 +71,82 @@
 	    <!-- ******ABOUT****** --> 
 	    <section id="about" class="about section">
 	        <div class="container">
-	            <h2 class="title text-center">What is devAid?</h2>
-	            <p class="intro text-center">Explain your project in detail. Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+	            <h2 class="title text-center">Leaderboard</h2>
+	            <!-- <p class="intro text-center">Explain your project in detail. Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p> -->
 	            <div class="row">
-	                <div class="item col-md-4 col-sm-6 col-xs-12">
-	                    <div class="icon-holder">
-	                        <i class="fa fa-heart"></i>
-	                    </div>
+	                <div class="item col-md-6 col-sm-10 col-xs-12">
 	                    <div class="content">
-	                        <h3 class="sub-title">Designed for developers</h3>
-	                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
+	                        <h3 class="sub-title">Volunteers</h3>
+	                        <table>
+	                        	<thead>
+	                        		<tr>
+	                        			<th>Rank</th>
+	                        			<th>Name</th>
+	                        			<th>Hours</th>
+	                        		</tr>
+	                        	</thead>
+	                        	<tbody>
+	                        		<tr>
+	                        			<td></td>
+	                        			<td>Jordan</td>
+	                        			<td>70</td>
+	                        		</tr>
+	                        		<tr>
+	                        			<td></td>
+	                        			<td>Hana</td>
+	                        			<td>60</td>
+	                        		</tr>
+	                        		<tr>
+	                        			<td></td>
+	                        			<td>Helen</td>
+	                        			<td>50</td>
+	                        		</tr>
+	                        		<tr>
+	                        			<td></td>
+	                        			<td>Kelvin</td>
+	                        			<td>40</td>
+	                        		</tr>
+	                        	</tbody>
+	                        </table>
 	                    </div><!--//content-->
 	                </div><!--//item-->
-	                <div class="item col-md-4 col-sm-6 col-xs-12">
-	                    <div class="icon-holder">
-	                        <i class="fa fa-clock-o"></i>
-	                    </div>
+	                <div class="item col-md-6 col-sm-10 col-xs-12">
 	                    <div class="content">
-	                        <h3 class="sub-title">Time saver</h3>
-	                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
+	                        <h3 class="sub-title">Sponsors</h3>
+	                        <table>
+	                        	<thead>
+	                        		<tr>
+	                        			<th>Rank</th>
+	                        			<th>Name</th>
+	                        			<th>Total Donated</th>
+	                        		</tr>
+	                        	</thead>
+	                        	<tbody>
+	                        		<tr>
+	                        			<td></td>
+	                        			<td>Jordan</td>
+	                        			<td>$9000</td>
+	                        		</tr>
+	                        		<tr>
+	                        			<td></td>
+	                        			<td>Hana</td>
+	                        			<td>$8000</td>
+	                        		</tr>
+	                        		<tr>
+	                        			<td></td>
+	                        			<td>Helen</td>
+	                        			<td>$7000</td>
+	                        		</tr>
+	                        		<tr>
+	                        			<td></td>
+	                        			<td>Kelvin</td>
+	                        			<td>$6000</td>
+	                        		</tr>
+	                        	</tbody>
+	                        </table>
 	                    </div><!--//content-->
 	                </div><!--//item-->
-	                <div class="item col-md-4 col-sm-6 col-xs-12">
-	                    <div class="icon-holder">
-	                        <i class="fa fa-crosshairs"></i>
-	                    </div>
-	                    <div class="content">
-	                        <h3 class="sub-title">UX-centred</h3>
-	                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
-	                    </div><!--//content-->
-	                </div><!--//item-->           
-	                <div class="clearfix visible-md"></div>    
-	                <div class="item col-md-4 col-sm-6 col-xs-12">
-	                    <div class="icon-holder">
-	                        <i class="fa fa-tablet"></i>
-	                    </div>
-	                    <div class="content">
-	                        <h3 class="sub-title">Mobile-friendly</h3>
-	                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
-	                    </div><!--//content-->
-	                </div><!--//item-->                
-	                <div class="item col-md-4 col-sm-6 col-xs-12">
-	                    <div class="icon-holder">
-	                        <i class="fa fa-code"></i>
-	                    </div>
-	                    <div class="content">
-	                        <h3 class="sub-title">Easy to customise</h3>
-	                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
-	                    </div><!--//content-->
-	                </div><!--//item-->
-	                <div class="item col-md-4 col-sm-6 col-xs-12">
-	                    <div class="icon-holder">
-	                        <i class="fa fa-coffee"></i>
-	                    </div>
-	                    <div class="content">
-	                        <h3 class="sub-title">LESS files included</h3>
-	                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
-	                    </div><!--//content-->
-	                </div><!--//item-->               
+	                <!--//item-->               
 	            </div><!--//row-->            
 	        </div><!--//container-->
 	    </section><!--//about-->
@@ -269,4 +297,93 @@
 	            </div><!--//contact-inner-->
 	        </div><!--//container-->
 	    </section><!--//contact-->  
+    </div>
+    <div class="modal fade" id="login" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <!-- <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title">Your Liver</h2>
+                </div> -->
+                <div class="modal-body">
+                    <div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel panel-login">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-6">
+								<a href="#" class="active" id="login-form-link">Login</a>
+							</div>
+							<div class="col-xs-6">
+								<a href="#" id="register-form-link">Register</a>
+							</div>
+						</div>
+						<hr>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<form id="login-form" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;">
+									<div class="form-group">
+										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+									</div>
+									<div class="form-group">
+										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+									</div>
+									<div class="form-group text-center">
+										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+										<label for="remember"> Remember Me</label>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-lg-12">
+												<div class="text-center">
+													<a href="http://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+								<form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
+									<div class="form-group">
+										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+									</div>
+									<div class="form-group">
+										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+									</div>
+									<div class="form-group">
+										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+									</div>
+									<div class="form-group">
+										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+            </div>
+
+        </div>
     </div>
