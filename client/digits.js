@@ -26,24 +26,30 @@
 
     // Set a click event listener on the Digits button.
     // $('#digits-button').click(onLoginButtonClick);
-    $(document).on('click', '.digits-button', onLoginButtonClick);
+    $(document).on('click', '#digits-register', onRegButtonClick);
+    // $(document).on('click', '#digits-login', onLoginButtonClick);
   });
 
   /**
    * Launch the Digits login flow.
    */
-  function onLoginButtonClick(event) {
+  function onRegButtonClick(event) {
     console.log('Digits login started.');
-    Digits.logIn().done(onLogin).fail(onLoginFailure);
+    Digits.logIn().done(onReg).fail(onFailure);
     return false;
   }
+  // function onLoginButtonClick(event) {
+  //   console.log('Digits login started.');
+  //   Digits.logIn().done(onLogin).fail(onFailure);
+  //   return false;
+  // }
 
   /**
    * Handle the login once the user has completed the sign in with Digits.
    * We must POST these headers to the server to safely invoke the Digits API
    * and get the logged-in user's data.
    */
-  function onLogin(loginResponse) {
+  function onReg(loginResponse) {
     console.log('Digits login succeeded.');
     var oAuthHeaders = parseOAuthHeaders(loginResponse.oauth_echo_headers);
 
@@ -52,14 +58,26 @@
       type: 'POST',
       url: '/digits',
       data: oAuthHeaders,
-      success: onDigitsSuccess
+      success: onDigitsSuccessReg
     });
   }
+  // function onLogin(loginResponse) {
+  //   console.log('Digits login succeeded.');
+  //   var oAuthHeaders = parseOAuthHeaders(loginResponse.oauth_echo_headers);
+
+  //   setDigitsButton('Signing In…');
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: '/digits/login',
+  //     data: oAuthHeaders,
+  //     success: onDigitsSuccessLogin
+  //   });
+  // }
 
   /**
    * Handle the login failure.
    */
-  function onLoginFailure(loginResponse) {
+  function onFailure(loginResponse) {
     console.log('Digits login failed.');
     setDigitsButton('Try Again');
   }
@@ -69,12 +87,15 @@
    * We must POST these headers to the server to safely invoke the Digits API
    * and get the logged-in user's data.
    */
-  function onDigitsSuccess(response) {
+  function onDigitsSuccessReg(response) {
     console.log('Digits phone number retrieved.')
-    console.log(response);
     $('#newUserNumber').val(response.phoneNumber);
     setDigitsNumber(response.phoneNumber);
   }
+  // function onDigitsSuccessLogin(response) {
+  //   console.log('Digits phone number retrieved.')
+  //   setDigitsNumber(response.phoneNumber);
+  // }
 
   /**
    * Parse OAuth Echo Headers:
@@ -93,11 +114,11 @@
 
   // Set the Digits button label (and make sure it is not disabled).
   function setDigitsButton(text) {
-    $('.digits-button').text(text).removeAttr('disabled');
+    $('#digits-register').text(text).removeAttr('disabled');
   }
 
   // Set the Digits phone number (and disable the button).
   function setDigitsNumber(phoneNumber) {
-    $('.digits-button').text(phoneNumber).attr('disabled', 'disabled');
+    $('#digits-register').text(phoneNumber).attr('disabled', 'disabled');
   }
 })();

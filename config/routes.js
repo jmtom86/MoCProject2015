@@ -27,7 +27,10 @@ module.exports = function(app) {
     users.getUserInfo(req, res);
   })
   app.post('/digits', function (req, res) {
-    digits.authenticate(req, res);
+    digits.register(req, res);
+  });
+  app.post('/digits/login', function (req, res) {
+    digits.login(req, res);
   });
 
   app.get('/gettask/:id', function(req,res){

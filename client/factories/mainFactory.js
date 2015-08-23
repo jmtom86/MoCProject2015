@@ -2,6 +2,7 @@ ourApp.factory('mainFactory', function ($http) {
   var users = [];
   var charities = [];
   var oneCharity = [];
+  var user = {};
   var factory = {};
 
   factory.addUser = function(userdata, callback) {
@@ -15,6 +16,9 @@ ourApp.factory('mainFactory', function ($http) {
       user = data;
       callback(user);
     });
+  }
+  factory.setUser = function(userdata) {
+    user = userdata;
   }
   factory.getCharities = function(callback) {
     $http.get('/getCharities').success(function(output) {

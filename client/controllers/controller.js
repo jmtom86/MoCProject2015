@@ -11,6 +11,7 @@ ourApp.controller('usersController', function ($scope, $location, $routeParams, 
         mainFactory.addUser($scope.newUser, function(data) {
             $scope.newUser = {};
             $('#login-modal').modal('hide');
+            mainFactory.setUser(data);
             $location.path('/userdashboard/'+data._id)
         });
     }
@@ -19,6 +20,7 @@ ourApp.controller('usersController', function ($scope, $location, $routeParams, 
         mainFactory.loginUser($scope.logUser, function (data) {
             $scope.logUser = {};
             if (data) {
+                mainFactory.setUser(data);
                 $('#login-modal').modal('hide');
                 $location.path('/userdashboard/'+data._id)
             }
@@ -51,6 +53,97 @@ ourApp.controller('usersController', function ($scope, $location, $routeParams, 
         });
     }
 
+  /**
+   * Initialize Digits for Web as soon as the JavaScript SDK is loaded.
+   */
+  $('#digits-sdk').load(function () {
+
+    // Set a click event listener on the Digits button.
+    // $('#digits-button').click(onLoginButtonClick);
+    $(document).on('click', '#digits-login', onLoginButtonClick);
+  });
+
+  /**
+   * Launch the Digits login flow.
+   */
+  function onLoginButtonClick(event) {
+    console.log('Digits login started.');
+    Digits.logIn().done(onLogin).fail(onFailure);
+    return false;
+  }
+
+  /**
+   * Handle the login once the user has completed the sign in with Digits.
+   * We must POST these headers to the server to safely invoke the Digits API
+   * and get the logged-in user's data.
+  */
+  function onLogin(loginResponse) {
+    console.log('Digits login succeeded.');
+    var oAuthHeaders = parseOAuthHeaders(loginResponse.oauth_echo_headers);
+
+    setDigitsButton('Signing In…');
+    $.ajax({
+      type: 'POST',
+      url: '/digits/login',
+      data: oAuthHeaders,
+      success: onDigitsSuccessLogin
+    });
+  }
+
+  /**
+   * Handle the login failure.
+   */
+  function onFailure(loginResponse) {
+    console.log('Digits login failed.');
+    setDigitsButton('Try Again');
+  }
+
+  /**
+   * Handle the login once the user has completed the sign in with Digits.
+   * We must POST these headers to the server to safely invoke the Digits API
+   * and get the logged-in user's data.
+   */
+  var onDigitsSuccessLogin = function(data) {
+    console.log('Digits phone number retrieved.')
+    if (!data) {
+        console.log('But no user was found with this number');
+        msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
+    }
+    else if (data.error) {
+        console.log('Just kidding, an error occurred');
+        msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
+    }
+    else {
+        console.log('Success!', data);
+        mainFactory.setUser(data);
+        $('#login-modal').modal('hide');
+        // console.log($scope);
+        // console.log($location);
+        $location.path('/userdashboard/'+data._id);
+        $scope.$apply();
+    }
+    // setDigitsNumber(response.phoneNumber);
+  }
+
+  /**
+   * Parse OAuth Echo Headers:
+   * 'X-Verify-Credentials-Authorization'
+   * 'X-Auth-Service-Provider'
+   */
+  function parseOAuthHeaders(oAuthEchoHeaders) {
+    var credentials = oAuthEchoHeaders['X-Verify-Credentials-Authorization'];
+    var apiUrl = oAuthEchoHeaders['X-Auth-Service-Provider'];
+
+    return {
+      apiUrl: apiUrl,
+      credentials: credentials
+    };
+  }
+
+  // Set the Digits button label (and make sure it is not disabled).
+  function setDigitsButton(text) {
+    $('#digits-register').text(text).removeAttr('disabled');
+  }
 })
 ourApp.controller('charityController', function ($scope, mainFactory) {
     $scope.charities = [];
