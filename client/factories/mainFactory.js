@@ -23,6 +23,13 @@ ourApp.factory('mainFactory', function ($http) {
   factory.setUser = function(userdata) {
     user = userdata;
   }
+  factory.makeCustomer = function (customer, callback) {
+    customer.id = user._id;
+    $http.post('/addCardCust', customer).success(function (data) {
+      // ??
+      callback();
+    })
+  }
 
   factory.addDonation = function(info, callback) {
     // console.log("here: ", info);

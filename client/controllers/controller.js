@@ -231,7 +231,7 @@ ourApp.controller('tasksController', function($scope, $location, $routeParams, m
 
 ourApp.controller('taskController', function($scope, $location, $routeParams, mainFactory){
 
-    
+    $scope.newDonation = {};
 
     $scope.taskId = $routeParams.id;
     $scope.task = {};
@@ -240,7 +240,6 @@ ourApp.controller('taskController', function($scope, $location, $routeParams, ma
     $scope.allDonations = [];
 
     $scope.user_taskID = [];
-    console.log($scope.taskId);
 
     mainFactory.getTask($routeParams.id, function(task){
         $scope.task = task;
@@ -289,33 +288,33 @@ ourApp.controller('taskController', function($scope, $location, $routeParams, ma
         console.log("usertask: ", id);
         console.log($scope.newDonation);
         $scope.newDonation.user_taskID = id;
-        mainFactory.addDonation($scope.newDonation, function(data) {
-                mainFactory.getTask($routeParams.id, function(task){
-                $scope.task = task;
-                console.log($scope.task);
-                mainFactory.getVolunteers($routeParams.id, function(volunteers){
-                    $scope.volunteers = volunteers;
-                    if(volunteers.length == 0){
-                        // console.log("NONE");
-                        $scope.message = "No Volunteers Yet!";
-                        console.log($scope.message);
-                    }
-                    console.log("VOLUNTEERS", $scope.volunteers);
-                    for(var i = 0; i < $scope.volunteers.length; i++){
-                        console.log($scope.volunteers[i]);
-                        $scope.volunteers[i].total = mainFactory.getTotal($scope.volunteers[i]._id, $scope.volunteers[i], function(totals){
-                            // for(var y = 0; y < totals.length; y++){
-                            //     console.log("VOLUNTEER - ", volunteers[i])
-                            //     $scope.volunteers[i].total += $scope.volunteers[i].hours * total[y].pledge;
-                            // }
-                        });
-                        console.log("AFTER LOOP", $scope.volunteers);
+        // mainFactory.addDonation($scope.newDonation, function(data) {
+        //         mainFactory.getTask($routeParams.id, function(task){
+        //         $scope.task = task;
+        //         console.log($scope.task);
+        //         mainFactory.getVolunteers($routeParams.id, function(volunteers){
+        //             $scope.volunteers = volunteers;
+        //             if(volunteers.length == 0){
+        //                 // console.log("NONE");
+        //                 $scope.message = "No Volunteers Yet!";
+        //                 console.log($scope.message);
+        //             }
+        //             console.log("VOLUNTEERS", $scope.volunteers);
+        //             for(var i = 0; i < $scope.volunteers.length; i++){
+        //                 console.log($scope.volunteers[i]);
+        //                 $scope.volunteers[i].total = mainFactory.getTotal($scope.volunteers[i]._id, $scope.volunteers[i], function(totals){
+        //                     // for(var y = 0; y < totals.length; y++){
+        //                     //     console.log("VOLUNTEER - ", volunteers[i])
+        //                     //     $scope.volunteers[i].total += $scope.volunteers[i].hours * total[y].pledge;
+        //                     // }
+        //                 });
+        //                 console.log("AFTER LOOP", $scope.volunteers);
 
-                    }
-                })
+        //             }
+        //         })
 
-            })
-        })
+        //     })
+        // })
     }
 
     $scope.simplifyResponseHandler = function (data) {
@@ -342,12 +341,15 @@ ourApp.controller('taskController', function($scope, $location, $routeParams, ma
             // The token contains id, last4, and card type
             var token = data["id"];
             // Insert the token into the form so it gets submitted to the server
-            $paymentForm.append("<input type='hidden' name='simplifyToken' value='" + token + "' />");
+            // $paymentForm.append("<input type='hidden' name='simplifyToken' value='" + token + "' />");
             // Submit the form to the server
-            console.log($paymentForm.get(0));
+            // console.log($paymentForm.get(0));
             // $paymentForm.get(0).submit();
-            console.log('Im so good');
-            
+            $scope.newDonation.token = token;
+            console.log($scope.newDonation);
+            mainFactory.makeCustomer($scope.newDonation, function () {
+                $scope.newDonation = {};
+            })
         }
     }
         $(document).on("submit", "#simplify-payment-form", function() {

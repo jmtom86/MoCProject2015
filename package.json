@@ -7,6 +7,7 @@
     "express": "^4.13.3",
     "mongoose": "^4.1.2",
     "nconf": "^0.7.2",
-    "request": "^2.61.0"
+    "request": "^2.61.0",
+    "simplify-commerce": "^1.2.0"
   }
 }

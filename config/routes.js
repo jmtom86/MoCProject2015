@@ -1,5 +1,6 @@
 var users = require('./../server/controllers/users');
 var digits = require('./../server/controllers/digits');
+var sc = require('./../server/controllers/simp-comm');
 
 module.exports = function(app) {
   app.get('/', function(req, res) {
@@ -10,17 +11,17 @@ module.exports = function(app) {
   app.get('/main', function(req, res){
   	res.render('mainpage.html');
   })
-
+  app.post('/addCardCust', function (req, res) {
+    sc.makeCustomer(req, res);
+  })
   app.post('/addUser', function(req, res) {
     users.addUser(req, res);
   })
-
   app.post('/loginUser', function(req, res) {
     users.loginUser(req, res);
-    })
+  })
   app.post('/addDonation', function(req, res) {
     users.addDonation(req, res);
-
   })
   app.get('/getOneCharity/:id', function(req, res) {
     users.getOneCharity(req, res);
