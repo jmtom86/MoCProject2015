@@ -29,8 +29,9 @@ module.exports = (function() {
           })
         },
         getUserInfo: function(req, res) {
-          // console.log("one user id: ", req.params.id);
-          User.findOne({_id: "55d92df4e4b0550b9e2b460b"}).populate('tasks')
+          console.log("one user id: ", req.params.id);
+
+          User.findOne({_id: req.params.id}).populate('tasks')
           .exec(function(err, data) {
               if (err) {
                   console.log(err);
@@ -86,7 +87,14 @@ module.exports = (function() {
         getRaisedTotalOne: function(req,res){
           console.log("ID", req.params.id, " _ TASK - ", req.params.task);
           var id = new mongoose.Types.ObjectId(req.params.id);
-          var task = new mongoose.Types.ObjectId(req.params.task);
+          var utask = new mongoose.Types.ObjectId(req.params.task);
+          Donation.aggregate([{$match: {user_tasks: utask}}],function(err, donations){
+            if(err){
+              console.log(err);
+            } else {
+              res.json(donations);
+            }
+          })
         },
         getRaisedTotal: function(req, res){
           // console.log("TOTAL", req.params.id);
@@ -114,7 +122,10 @@ module.exports = (function() {
             if(err){
               console.log(err);
             } else {
-              res.json(tasks);
+              Charity.populate(tasks, {path: "charity"}, function(err, newtasks){
+                console.log("NEW TASKS", newtasks);
+                res.json(newtasks);
+              })
             }
           })
         },

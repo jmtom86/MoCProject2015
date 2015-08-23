@@ -23,7 +23,7 @@ module.exports = function(app) {
   app.get('/getCharities', function(req, res) {
     users.getCharities(req, res);
   })
-  app.get('/getUserInfo', function(req, res) {
+  app.get('/getUserInfo/:id', function(req, res) {
     users.getUserInfo(req, res);
   })
   app.post('/digits', function (req, res) {
@@ -58,6 +58,7 @@ module.exports = function(app) {
   })
 
   app.get('/gettotalone/:id/:task', function(req, res){
+    console.log("ROUTES");
     users.getRaisedTotalOne(req, res);
   })
 }
