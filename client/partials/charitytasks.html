@@ -53,8 +53,9 @@
                                 <tr ng-repeat="task in charityUpcoming">
                                     <td><a href="#/volunteers/{{task._id}}">{{task.title}}</a></td>
                                     <td>{{task.description}}</td>
+
                                     <td>{{task.date | date:'short'}}</td>
-                                    <td><button ng-click="volClicked(task._id)" type="button" class="actionbtn btn btn-cta-primary" data-toggle="modal" data-target="#volModal">Volunteer</button><button type="button" ng-click="volPage(task._id)" class="actionbtn btn btn-cta-primary">Donate</button></td>
+                                    <td><button ng-click="volClicked(task._id)" type="button" class="actionbtn btn btn-cta-primary" data-toggle="modal" data-target="#volModal">Volunteer</button><button type="button" ng-click="donClicked(task._id)" class="actionbtn btn btn-cta-primary" data-toggle="modal" data-target="#donModal">Donate</button></td>
                                 </tr>
 
                             </tbody>
@@ -81,7 +82,9 @@
                                 <tr ng-repeat="task in charityCompleted">
                                     <td><a href="#/volunteers/{{task._id}}">{{task.title}}</a></td>
                                     <td>{{task.description}}</td>
+
                                     <td>{{task.date | date:'shortDate'}}</td>
+
                                 </tr>
                             </tbody>
                         </table>
@@ -96,13 +99,32 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
+            <h4 class="modal-title">You've chosen to volunteer!</h4>
           </div>
           <div class="modal-body">
             <p>Are you sure you want to volunteer for this task?</p>
           </div>
           <div class="modal-footer">
             <button type="button" ng-click="volPage(taskId)" class="btn btn-default">Yes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div id="donModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">You've chosen to Donate!</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to volunteer for this task?</p>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" ng-click="volPage(taskId)" class="btn btn-default">Yes</button> -->
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
