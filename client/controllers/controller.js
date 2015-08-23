@@ -1,44 +1,75 @@
-ourApp.controller('usersController', function ($scope, $location, $routeParams, mainFactory) {
-    var userdata = {};
 
-    $scope.mainpageUsers = {};
-    mainFactory.getallUsers(function(data) {
-        $scope.mainpageUsers = data;
-    })
+ourApp.controller('dashboardController', function($scope, $location, $routeParams, mainFactory){
+    $scope.userdata = {};
 
     $scope.tasksCompleted = [];
     $scope.completedMessage = '';
     $scope.upcomingMessage = '';
     $scope.tasksUpcoming = [];
     $scope.totalHours = {};
+    $scope.message = '';
+    console.log("ROUTE PARAMS", $routeParams.id);
+    mainFactory.getUserInfo($routeParams.id, function(data) {
+        console.log("GOT DATA", data);
+        $scope.userdata = data;
+        mainFactory.getAllTasks($scope.userdata._id, function(tasks){
+            var completed = [];
+            for(x of tasks){
+                if(x.completion == false)
+                    $scope.tasksUpcoming.push(x);
+                else{
+                    $scope.tasksCompleted.push(x);
+                    completed.push(x);
+                }
 
+            }
+            // console.log($scope.tasksCompleted);
+            if($scope.tasksUpcoming.length == 0)
+                $scope.upcomingMessage = "No Upcoming Tasks!";
+            if($scope.tasksCompleted.length == 0){
+                $scope.completedMessage = "No Tasks Completed!";
+                $scope.totalHours[0] = {};
+                $scope.totalHours[0].count = 0;
+            }
+
+            console.log("COMPLETED" ,$scope.tasksCompleted);
+            for(var i = 0; i < completed.length; i++){
+                completed[i].total = 0;
+                console.log("LOOP" ,completed[i]);
+                mainFactory.getTotalOne($scope.userdata._id, completed[i], function(totals){
+                    console.log("IN HERE");
+                });
+                console.log(completed[i]);
+            }
+        })
+        mainFactory.getHoursId($scope.userdata._id, function(data){
+            $scope.totalHours = data;
+        })
+    })
+
+})
+
+
+ourApp.controller('usersController', function ($scope, $location, $routeParams, mainFactory) {
+    $scope.userdata = {};
+    $scope.tasksCompleted = [];
+    $scope.completedMessage = '';
+    $scope.upcomingMessage = '';
+    $scope.tasksUpcoming = [];
+    $scope.totalHours = {};
     $scope.topVolunteers = {};
+    $scope.logged = false;
     mainFactory.getTopVolunteers(function(data){
         $scope.topVolunteers = data;
         console.log("TOP", $scope.topVolunteers);
     })
 
 
-    mainFactory.getUserInfo(function(data) {
-        $scope.userdata = data;
-        mainFactory.getAllTasks($scope.userdata._id, function(data){
-            // console.log(data);
-            for(x of data){
-                if(x.completion == false)
-                    $scope.tasksUpcoming.push(x);
-                else
-                    $scope.tasksCompleted.push(x);
-            }
-            // console.log($scope.tasksCompleted);
-            if($scope.tasksUpcoming.length == 0)
-                $scope.upcomingMessage = "No Upcoming Tasks!";
-            if($scope.tasksCompleted.length == 0)
-                $scope.completedMessage = "No Tasks Completed!";
-        })
-        mainFactory.getHoursId($scope.userdata._id, function(data){
-            $scope.totalHours = data;
-        })
-    })
+    $scope.logout = function() {
+        console.log("logging out");
+        mainFactory.logout();
+    }
+
 
     $scope.addUser = function() {
         $scope.newUser.number = $('#newUserNumber').val();
@@ -56,6 +87,7 @@ ourApp.controller('usersController', function ($scope, $location, $routeParams, 
             $scope.logUser = {};
             if (data) {
                 mainFactory.setUser(data);
+                $scope.userData = data;
                 $('#login-modal').modal('hide');
                 $location.path('/userdashboard/'+data._id)
             }
@@ -182,6 +214,11 @@ ourApp.controller('usersController', function ($scope, $location, $routeParams, 
 })
 ourApp.controller('charityController', function ($scope, mainFactory) {
     $scope.charities = [];
+    $scope.user = {};
+    mainFactory.getUser(function(data){
+        $scope.user = data;
+        console.log("CHARITY CONTROL", $scope.user);
+    })
 
     mainFactory.getCharities(function(data) {
         for (i in data) {
@@ -194,6 +231,9 @@ ourApp.controller('charityController', function ($scope, mainFactory) {
         }
         $scope.charities = data;
     })
+    $scope.logout = function() {
+        mainFactory.logout();
+    }
 })
 ourApp.controller('tasksController', function($scope, $location, $routeParams, mainFactory) {
     $scope.charityCompleted = [];
@@ -202,6 +242,11 @@ ourApp.controller('tasksController', function($scope, $location, $routeParams, m
     $scope.charityUpcoming = [];
     $scope.charityInfo = {};
     $scope.taskId = [];
+    $scope.user = {};
+
+    mainFactory.getUser(function(data){
+        $scope.user = data;
+    })
     mainFactory.getOneCharity($routeParams.id, function(data) {
         $scope.charityInfo = data;
         for (i of data.tasks) {
@@ -227,6 +272,12 @@ ourApp.controller('tasksController', function($scope, $location, $routeParams, m
         console.log("volPAGE: ", id);
         $location.path('/volunteers/'+id);
     }
+    $scope.addUserTask = function(id){
+        var usertask = {_user: $scope.user._id, charity: $scope.charityInfo._id, task: $scope.taskId };
+        mainFactory.addUserTask(usertask, function(data){
+            $location.path('/volunteers/'+id);
+        })
+    }
 })
 
 ourApp.controller('taskController', function($scope, $location, $routeParams, mainFactory){
@@ -238,9 +289,17 @@ ourApp.controller('taskController', function($scope, $location, $routeParams, ma
     $scope.volunteers = [];
     $scope.message = '';
     $scope.allDonations = [];
+    $scope.user = {};
 
     $scope.user_taskID = [];
-
+    console.log($scope.taskId);
+    $scope.logout = function() {
+        mainFactory.logout();
+    }
+    mainFactory.getUser(function(data){
+        $scope.user = data;
+        console.log("USER", $scope.user);
+    })
     mainFactory.getTask($routeParams.id, function(task){
         $scope.task = task;
         // console.log($scope.task);

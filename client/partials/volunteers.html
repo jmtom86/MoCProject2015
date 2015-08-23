@@ -3,7 +3,7 @@
         <div class="container">
             <h1 class="logo pull-left">
                 <a href="#/userdashboard">
-                    <span class="logo-title">devAid</span>
+                    <span class="logo-title">Pledge-A-Thons</span>
                 </a>
             </h1><!--//logo-->
             <nav id="main-nav" class="main-nav navbar-right" >
@@ -17,10 +17,11 @@
                 </div><!--//navbar-header-->
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active nav-item sr-only"><a href="#promo">Home</a></li>
+
                         <li class="nav-item"><a href="/#charities">Charities</a></li>
-                        <li class="nav-item"><a href="#/userdashboard">Profile</a></li>
-                        <li class="nav-item last"><a data-toggle="modal" data-target="#login"  href="">Logout</a></li>
+                        <li class="nav-item"><a href="#/userdashboard/{{user._id}}">Profile</a></li>
+                        <li class="nav-item last"><a data-toggle="modal" data-target="#login" ng-click="logout()" href="">Logout</a></li>
+
 
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
@@ -40,7 +41,6 @@
             <div class="row">
                 <div class="item col-md-12 col-sm-12 col-xs-12">
                     <div class="content">
-                    <p>{{volunteers}}</p>
                         <table id="volunteers">
                             <thead>
                                 <th class="ctheads">Name</th>
@@ -54,19 +54,20 @@
                             <tbody>
 
                                 <tr ng-repeat="volunteer in volunteers">
-                                    <td><a href="">{{volunteer._user.name}}</a></td>
+                                    <td><a href="#/userdashboard/{{volunteer._user._id}}">{{volunteer._user.name}}</a></td>
                                     <td>{{volunteer._user.email}}</td>
 
-                                    <td ng-show="volunteer.completion == false"></td>
+                                    <td ng-show="volunteer.completion == false">3</td>
                                     <td ng-show="volunteer.completion == true">{{volunteer.hours}}</td>
                                     <td>$ {{volunteer.total}}</td>
-                                    <td ng-show="task.completion == false"><button ng-click="donationPage(volunteer._id)" type="button" class="actionbtn btn btn-cta-primary" data-toggle="modal" data-target="#donateModal">Donate</button>  <button class="actionbtn btn btn-cta-primary">Remove</button></td>
+                                    <td ng-show="task.completion == false"><button ng-click="donateClicked(volunteer._id)" type="button" class="actionbtn btn btn-cta-primary" data-toggle="modal" data-target="#donateModal">Donate</button>  <button ng-show="volunteer._user._id == user._id"class="actionbtn btn btn-cta-primary">Remove</button></td>
+
                                 </tr>
 
 
                             </tbody>
                         </table>
-                        <h3 class="text-center" ng-bind="message"></h3>
+                        <h3 class="end text-center" ng-bind="message"></h3>
                     </div>
                 </div>
             </div>

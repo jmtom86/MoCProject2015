@@ -29,7 +29,7 @@ module.exports = function(app) {
   app.get('/getCharities', function(req, res) {
     users.getCharities(req, res);
   })
-  app.get('/getUserInfo', function(req, res) {
+  app.get('/getUserInfo/:id', function(req, res) {
     users.getUserInfo(req, res);
   })
   app.get('/getallUsers', function(req, res) {
@@ -41,6 +41,10 @@ module.exports = function(app) {
   app.post('/digits/login', function (req, res) {
     digits.login(req, res);
   });
+
+  app.post('/addusertask', function(req, res){
+    users.addusertask(req, res);
+  })
 
   app.get('/gettask/:id', function(req,res){
     users.getTask(req, res);
@@ -64,5 +68,10 @@ module.exports = function(app) {
 
   app.get('/topvolunteers', function(req, res){
     users.getTopVolunteers(req, res);
+  })
+
+  app.get('/gettotalone/:id/:task', function(req, res){
+    console.log("ROUTES");
+    users.getRaisedTotalOne(req, res);
   })
 }

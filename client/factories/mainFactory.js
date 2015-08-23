@@ -1,4 +1,4 @@
-ourApp.factory('mainFactory', function ($http) {
+ourApp.factory('mainFactory', function ($http, $location) {
   var users = [];
   var mainpageUsers = [];
   var charities = [];
@@ -20,6 +20,10 @@ ourApp.factory('mainFactory', function ($http) {
       callback(user);
     });
   }
+  factory.logout = function() {
+    user = {};
+    $location.path('/');
+  }
   factory.setUser = function(userdata) {
     user = userdata;
   }
@@ -31,6 +35,7 @@ ourApp.factory('mainFactory', function ($http) {
     })
   }
 
+
   factory.addDonation = function(info, callback) {
     // console.log("here: ", info);
     $http.post('/addDonation', info).success(function(data) {
@@ -39,14 +44,27 @@ ourApp.factory('mainFactory', function ($http) {
     });
   }
 
+
+  factory.getUser = function(callback){
+  	console.log("BLAH");
+  	console.log("FACTORY", user);
+  	callback(user);
+  }
+
   factory.getCharities = function(callback) {
     $http.get('/getCharities').success(function(output) {
         charities = output;
         callback(charities);
     })
   }
-  factory.getUserInfo = function(callback) {
-    $http.get('/getUserInfo').success(function(output) {
+
+  factory.addUserTask = function(info, callback){
+  	$http.post('/addusertask', info).success(function(output){
+  		callback(output);
+  	})
+  }
+  factory.getUserInfo = function(id, callback) {
+    $http.get('/getUserInfo/'+id).success(function(output) {
         users = output;
         callback(users);
     })
@@ -71,6 +89,20 @@ ourApp.factory('mainFactory', function ($http) {
 
   factory.getVolunteers = function(id, callback){
   	$http.get('/volunteers/'+id).success(function(output){
+  		callback(output);
+  	})
+  }
+
+  factory.getTotalOne = function(id, task, callback){
+  	$http.get('/gettotalone/'+id+'/'+task._id).success(function(output){
+  		console.log("TASK", task);
+  		console.log("OUTPUt", output);
+  		var sum = 0;
+  		for(x in output){
+  			sum += output[x].pledge * task.hours;
+  		}
+  		task.total = sum;
+  		console.log("TASK", task);
   		callback(output);
   	})
   }
