@@ -39,6 +39,10 @@ ourApp.controller('usersController', function ($scope, $location, $routeParams, 
             $scope.totalHours = data;
         })
     })
+    $scope.logout = function() {
+        console.log("logging out");
+        mainFactory.logout();
+    }
 
     $scope.addUser = function() {
         $scope.newUser.number = $('#newUserNumber').val();
