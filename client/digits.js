@@ -61,7 +61,7 @@
    */
   function onLoginFailure(loginResponse) {
     console.log('Digits login failed.');
-    setDigitsButton('Sign In with Phone');
+    setDigitsButton('Try Again');
   }
 
   /**

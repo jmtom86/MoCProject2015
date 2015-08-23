@@ -10,6 +10,12 @@ ourApp.factory('mainFactory', function ($http) {
       callback(user);
     });
   }
+  factory.loginUser = function(userdata, callback) {
+    $http.post('/loginUser', userdata).success(function(data) {
+      user = data;
+      callback(user);
+    });
+  }
   factory.getCharities = function(callback) {
     $http.get('/getCharities').success(function(output) {
         charities = output;

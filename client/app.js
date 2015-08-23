@@ -8,6 +8,9 @@ ourApp.config( function ($routeProvider) {
     .when('/userdashboard', {
       templateUrl: '/partials/userdashboard.html'
     })
+    .when('/userdashboard/:id', {
+      templateUrl: '/partials/userdashboard.html'
+    })
     .when('/charities', {
       templateUrl: '/partials/charitypage.html'
     })

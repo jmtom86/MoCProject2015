@@ -18,6 +18,16 @@ module.exports = (function() {
             }
           })
         },
+        loginUser: function(req, res) {
+          console.log(req.body);
+          User.findOne(req.body, function(err, results) {
+            if (err) {
+              console.log(err);
+            } else {
+              res.json(results);
+            }
+          })
+        },
         getUserInfo: function(req, res) {
           // console.log("one user id: ", req.params.id);
           User.findOne({_id: "55d92df4e4b0550b9e2b460b"}).populate('tasks')

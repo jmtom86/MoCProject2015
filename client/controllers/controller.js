@@ -1,4 +1,4 @@
-ourApp.controller('usersController', function($scope, $routeParams, mainFactory) {
+ourApp.controller('usersController', function ($scope, $location, $routeParams, mainFactory) {
     var userdata = {};
     mainFactory.getUserInfo(function(data) {
         $scope.userdata = data;
@@ -6,14 +6,53 @@ ourApp.controller('usersController', function($scope, $routeParams, mainFactory)
     })
 
     $scope.addUser = function() {
-        // console.log($scope.newUser);
+        $scope.newUser.number = $('#newUserNumber').val();
+        console.log($scope.newUser);
         mainFactory.addUser($scope.newUser, function(data) {
             $scope.newUser = {};
+            $('#login-modal').modal('hide');
+            $location.path('/userdashboard/'+data._id)
+        });
+    }
+
+    $scope.login = function () {
+        mainFactory.loginUser($scope.logUser, function (data) {
+            $scope.logUser = {};
+            if (data) {
+                $('#login-modal').modal('hide');
+                $location.path('/userdashboard/'+data._id)
+            }
+            else {
+                msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
+            }
+        })
+    }
+
+    var $msgAnimateTime = 150;
+    var $msgShowTime = 2000;
+
+    function msgChange($divTag, $iconTag, $textTag, $divClass, $iconClass, $msgText) {
+        var $msgOld = $divTag.text();
+        msgFade($textTag, $msgText);
+        $divTag.addClass($divClass);
+        $iconTag.removeClass("glyphicon-chevron-right");
+        $iconTag.addClass($iconClass + " " + $divClass);
+        setTimeout(function() {
+            msgFade($textTag, $msgOld);
+            $divTag.removeClass($divClass);
+            $iconTag.addClass("glyphicon-chevron-right");
+            $iconTag.removeClass($iconClass + " " + $divClass);
+      }, $msgShowTime);
+    }
+
+    function msgFade ($msgId, $msgText) {
+        $msgId.fadeOut($msgAnimateTime, function() {
+            $(this).text($msgText).fadeIn($msgAnimateTime);
         });
     }
 
 })
-ourApp.controller('charityController', function($scope, mainFactory) {
+ourApp.controller('charityController', function ($scope, mainFactory) {
     $scope.charities = [];
 
     mainFactory.getCharities(function(data) {
