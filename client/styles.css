@@ -561,6 +561,10 @@ pre code {
 .footer .fa-heart {
   color: #fb866a;
 }
+
+.btns {
+  margin-top: 50px;
+}
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) {
   .header .main-nav button {
