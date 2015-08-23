@@ -83,6 +83,11 @@ module.exports = (function() {
             }
           })
         },
+        getRaisedTotalOne: function(req,res){
+          console.log("ID", req.params.id, " _ TASK - ", req.params.task);
+          var id = new mongoose.Types.ObjectId(req.params.id);
+          var task = new mongoose.Types.ObjectId(req.params.task);
+        },
         getRaisedTotal: function(req, res){
           // console.log("TOTAL", req.params.id);
           var id = new mongoose.Types.ObjectId(req.params.id);
