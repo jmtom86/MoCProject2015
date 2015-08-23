@@ -1,5 +1,6 @@
 <div ng-controller="charityController">
     <h2>Charity Page</h2>
+    <p>{{charities}}</p>
     <a href="">Your Profile</a>
     <table>
         <thead>
@@ -8,6 +9,7 @@
             <td>Description</td>
             <td>Email</td>
             <td>Number</td>
+            <td># Upcoming Tasks</td>
         </thead>
         <tbody ng-repeat="charity in charities">
             <td></td>
@@ -15,6 +17,7 @@
             <td>{{charity.description}}</td>
             <td>{{charity.email}}</td>
             <td>{{charity.number}}</td>
+            <td>{{charity.count}}</td>
         </tbody>
     </table>
 </div>
