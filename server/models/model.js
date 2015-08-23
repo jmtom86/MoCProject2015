@@ -19,13 +19,11 @@ var TasksSchema = new mongoose.Schema({
 	updated_at: {type: Date, default: new Date},
 })
 var DonationsSchema = new mongoose.Schema({
-	_task: {type: Schema.ObjectId, ref: 'Task'},
-	_user: {type: Schema.ObjectId, ref: 'User'},
-	hours: Number,
-	pledge: Number,
-	total: Number,
-	created_at: {type: Date, default: new Date},
-	updated_at: {type: Date, default: new Date},
+	user_tasks: {type: Schema.ObjectId, ref: 'UserTask'},
+	_sponsor: {type: Schema.ObjectId, ref: 'User'},
+	pledge: Number
+	// created_at: {type: Date, default: new Date},
+	// updated_at: {type: Date, default: new Date},
 })
 var CharitiesSchema = new mongoose.Schema({
 	title: String,
@@ -39,7 +37,8 @@ var UserTaskSchema = new mongoose.Schema({
 	_user: {type: Schema.ObjectId, ref:"User"},
 	task: {type: Schema.ObjectId, ref:"Task"},
 	hours: Number,
-	completion: Boolean
+	completion: Boolean,
+	donations: [{type: Schema.Types.ObjectId, ref:"Donation"}]
 })
 
 var DonationSchema = new mongoose.Schema({

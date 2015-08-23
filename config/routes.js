@@ -46,4 +46,8 @@ module.exports = function(app) {
   app.get('/totalhoursbyid/:id', function(req, res){
     users.getHoursId(req, res);
   })
+
+  app.get('/topvolunteers', function(req, res){
+    users.getTopVolunteers(req, res);
+  })
 }

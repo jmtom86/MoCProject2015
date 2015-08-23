@@ -5,17 +5,23 @@ ourApp.controller('usersController', function($scope, $routeParams, mainFactory)
     $scope.upcomingMessage = '';
     $scope.tasksUpcoming = [];
     $scope.totalHours = {};
+    $scope.topVolunteers = {};
+    mainFactory.getTopVolunteers(function(data){
+        $scope.topVolunteers = data;
+        console.log("TOP", $scope.topVolunteers);
+    })
+
     mainFactory.getUserInfo(function(data) {
         $scope.userdata = data;
         mainFactory.getAllTasks($scope.userdata._id, function(data){
-            console.log(data);
+            // console.log(data);
             for(x of data){
                 if(x.completion == false)
                     $scope.tasksUpcoming.push(x);
                 else
                     $scope.tasksCompleted.push(x);
             }
-            console.log($scope.tasksCompleted);
+            // console.log($scope.tasksCompleted);
             if($scope.tasksUpcoming.length == 0)
                 $scope.upcomingMessage = "No Upcoming Tasks!";
             if($scope.tasksCompleted.length == 0)
@@ -69,7 +75,7 @@ ourApp.controller('tasksController', function($scope, $location, $routeParams, m
             $scope.upcomingMessage = "No Upcoming Tasks!";
         if($scope.charityCompleted.length == 0)
             $scope.completedMessage = "No Tasks Completed!";
-        console.log($scope.upcomingMessage);
+        // console.log($scope.upcomingMessage);
     })
     $scope.volClicked = function(id) {
         $scope.taskId = id;
@@ -86,44 +92,26 @@ ourApp.controller('taskController', function($scope, $location, $routeParams, ma
     $scope.volunteers = [];
     $scope.message = '';
     $scope.allDonations = [];
-    console.log($scope.taskId);
+    // console.log($scope.taskId);
     mainFactory.getTask($routeParams.id, function(task){
         $scope.task = task;
-        console.log($scope.task);
+        // console.log($scope.task);
         mainFactory.getVolunteers($routeParams.id, function(volunteers){
             $scope.volunteers = volunteers;
+            // console.log("GET VOLUNTEERS", volunteers);
             if(volunteers.length == 0){
                 // console.log("NONE");
                 $scope.message = "No Volunteers Yet!";
-                console.log($scope.message);
+                // console.log($scope.message);
             }
             console.log("VOLUNTEERS", $scope.volunteers);
-            for(var i = 0; i < $scope.volunteers.length; i++){
-                console.log($scope.volunteers[i]);
-                $scope.volunteers[i].total = mainFactory.getTotal($scope.volunteers[i]._id, $scope.volunteers[i], function(totals){
-                    // for(var y = 0; y < totals.length; y++){
-                    //     console.log("VOLUNTEER - ", volunteers[i])
-                    //     $scope.volunteers[i].total += $scope.volunteers[i].hours * total[y].pledge;
-                    // }
+            for(var i = 0; i < volunteers.length; i++){
+                volunteers[i].total = 0;
+                mainFactory.getTotal(volunteers[i]._id, volunteers[i], function(totals){
                 });
-                console.log("AFTER LOOP", $scope.volunteers);
                 
             }
-            // for(x of volunteers){
-            //     console.log("X", x);
-            //     x.total = 0;
-            //     mainFactory.getTotal(x._id, function(totals){
-            //         console.log("GET TOTAL DATA", totals);
-            //         for(y in totals){
-            //             console.log("HOURS", x.hours, "PLEDGE - ", totals[y] );
-            //             console.log("MULTIPLICATION", x.hours * totals[y].pledge);
-            //             x.total += x.hours * totals[y].pledge;
-            //         }
-
-            //     })
-            // }
-            //console.log("VOLUNTEERS", $scope.volunteers);
-            
+            $scope.volunteers = volunteers;
         })
 
     })
