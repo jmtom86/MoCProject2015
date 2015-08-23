@@ -2,7 +2,7 @@
     <header class="headeruser navbar-fixed-top">
         <div class="container">
             <h1 class="logo pull-left">
-                <a href="#promo">
+                <a href="#/userdashboard">
                     <span class="logo-title">devAid</span>
                 </a>
             </h1><!--//logo-->
@@ -18,12 +18,12 @@
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active nav-item sr-only"><a href="#promo">Home</a></li>
-                        <li class="nav-item"><a href="#about">About</a></li>
+                        <li class="nav-item"><a href="/#charities">Charities</a></li>
                         <li class="nav-item"><a href="#features">Features</a></li>
                         <li class="nav-item"><a  href="#docs">Docs</a></li>
 
                         <li class="nav-item"><a href="#license">License</a></li>
-                        <li class="nav-item last"><a data-toggle="modal" data-target="#login"  href="">Login</a></li>
+                        <li class="nav-item last"><a data-toggle="modal" data-target="#login"  href="">Logout</a></li>
 
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
@@ -39,22 +39,25 @@
         <p>Total $ Donated: $111</p>
         <div class="container">
             <div class="row">
-                <div class="item col-md-6 col-sm-10 col-xs-12">
+                <div class="item col-md-10 col-sm-10 col-xs-12">
                     <div class="content">
                         <h3 class="sub-title">Upcoming Tasks</h3>
-                        <table>
+                        <table id="upcoming" >
                             <thead>
                                 <tr>
-                                    <td><b>Task</b></td>
-                                    <td><b>Charity</b></td>
+                                    <th class="theads">Task</th>
+                                    <th class="theads">Charity</th>
+                                    <th class="theads">Date</th>
+                                    <th class="theads">Actions</th>
                                 </tr>
 
                             </thead>
-                            <tbody ng-repeat="user in userdata">
+                            <tbody>
                                 <tr>
-                                    <td></td>
-                                    <td>{{user.tasks}}</td>
-                                    <td>{{user.tasks.charity}}</td>
+                                    <td>Clean Beach akfbjqek fbqkwefbjwhebfhjwe bfhjwefbajwef</td>
+                                    <td>Clean Environment</td>
+                                    <td>Aug 11th 2015</td>
+                                    <td><button class="actionbtn btn btn-cta-primary">Donate</button>  <button class="actionbtn btn btn-cta-primary">Remove</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -63,26 +66,42 @@
             </div>
 
         <div class="row">
-                <div class="item col-md-6 col-sm-10 col-xs-12">
+                <div class="item col-md-10 col-sm-10 col-xs-12">
                     <div class="content">
                         <h3 class="sub-title">Completed Tasks</h3>
-                        <table>
+                        <table id="completed" >
                             <thead>
-                                <td></td>
-                                <td>Task</td>
-                                <td>Charity</td>
+                                <tr>
+                                    <th class="theads">Task</th>
+                                    <th class="theads">Charity</th> 
+                                    <th class="theads">Date</th> 
+                                    <th class="theads">Hours Volunteered</th> 
+                                    <th class="theads">Money Raised</th> 
+                                </tr>
+                                
                             </thead>
                             <tbody>
-                                <td></td>
-                                <td>Donate Blood</td>
-                                <td>Red Cross</td>
+                                <tr>
+                                    <td>Donate Blood</td>
+                                    <td>Red Cross</td> 
+                                    <td>Aug 5th 2015</td> 
+                                    <td>3</td> 
+                                    <td>$ 200</td> 
+                                </tr>
+                                <tr>
+                                    <td>Feed Homeless</td>
+                                    <td>Food Bank</td> 
+                                    <td>Aug 1st 2015</td> 
+                                    <td>4</td> 
+                                    <td>$ 150</td> 
+                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <a href="/#charities">Charity Page</a>
     </div>
 </div>
     
