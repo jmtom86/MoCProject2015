@@ -1,4 +1,4 @@
-ourApp.factory('mainFactory', function ($http) {
+ourApp.factory('mainFactory', function ($http, $location) {
   var users = [];
   var mainpageUsers = [];
   var charities = [];
@@ -19,6 +19,10 @@ ourApp.factory('mainFactory', function ($http) {
       user = data;
       callback(user);
     });
+  }
+  factory.logout = function() {
+    user = {};
+    $location.path('/');
   }
   factory.setUser = function(userdata) {
     user = userdata;

@@ -3,7 +3,7 @@
         <div class="container">
             <h1 class="logo pull-left">
                 <a href="#/userdashboard">
-                    <span class="logo-title">devAid</span>
+                    <span class="logo-title">Pledge-A-Thons</span>
                 </a>
             </h1><!--//logo-->
             <nav id="main-nav" class="main-nav navbar-right" >
@@ -17,10 +17,10 @@
                 </div><!--//navbar-header-->
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active nav-item sr-only"><a href="#promo">Home</a></li>
+
                         <li class="nav-item"><a href="/#charities">Charities</a></li>
                         <li class="nav-item"><a href="#/userdashboard">Profile</a></li>
-                        <li class="nav-item last"><a data-toggle="modal" data-target="#login"  href="">Logout</a></li>
+                        <li class="nav-item last"><a data-toggle="modal" data-target="#login" href="" ng-click="logout()">Logout</a></li>
 
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
@@ -71,22 +71,24 @@
                             <thead>
                                 <tr>
                                     <th class="theads">Task</th>
-                                    <th class="theads">Charity</th> 
-                                    <th class="theads">Date</th> 
-                                    <th class="theads">Hours Volunteered</th> 
-                                    <th class="theads">Money Raised</th> 
+                                    <th class="theads">Charity</th>
+                                    <th class="theads">Date</th>
+                                    <th class="theads">Hours Volunteered</th>
+                                    <th class="theads">Money Raised</th>
                                 </tr>
-                                
+
                             </thead>
                             <tbody>
                                 <tr ng-repeat="task in tasksCompleted | orderBy: 'task.task.date'">
                                     <td>{{task.task.title}}</td>
-                                    <td>{{task.charity.name}}</td> 
-                                    <td>{{task.task.date | date: 'short'}}</td> 
-                                    <td>{{task.hours}}</td> 
-                                    <td>$ {{task.total}}</td> 
+
+                                    <td>{{task.charity.name}}</td>
+                                    <td>{{task.task.date | date: 'short'}}</td>
+                                    <td>{{task.hours}}</td>
+                                    <td>$ {{task.total}}</td>
+
                                 </tr>
-                                
+
                             </tbody>
                         </table>
                         <h3 class="end text-center" ng-bind="completedMessage"></h3>
@@ -96,4 +98,4 @@
         </div>
     </div>
 </div>
-    
+

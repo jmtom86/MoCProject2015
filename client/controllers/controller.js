@@ -21,7 +21,7 @@ ourApp.controller('dashboardController', function($scope, $location, $routeParam
                     $scope.tasksCompleted.push(x);
                     completed.push(x);
                 }
-                    
+
             }
             // console.log($scope.tasksCompleted);
             if($scope.tasksUpcoming.length == 0)
@@ -31,7 +31,7 @@ ourApp.controller('dashboardController', function($scope, $location, $routeParam
                 $scope.totalHours[0] = {};
                 $scope.totalHours[0].count = 0;
             }
-                
+
             console.log("COMPLETED" ,$scope.tasksCompleted);
             for(var i = 0; i < completed.length; i++){
                 completed[i].total = 0;
@@ -46,6 +46,7 @@ ourApp.controller('dashboardController', function($scope, $location, $routeParam
             $scope.totalHours = data;
         })
     })
+
 })
 
 
@@ -63,7 +64,12 @@ ourApp.controller('usersController', function ($scope, $location, $routeParams, 
         console.log("TOP", $scope.topVolunteers);
     })
 
-    
+
+    $scope.logout = function() {
+        console.log("logging out");
+        mainFactory.logout();
+    }
+
 
     $scope.addUser = function() {
         $scope.newUser.number = $('#newUserNumber').val();
@@ -220,6 +226,9 @@ ourApp.controller('charityController', function ($scope, mainFactory) {
         }
         $scope.charities = data;
     })
+    $scope.logout = function() {
+        mainFactory.logout();
+    }
 })
 ourApp.controller('tasksController', function($scope, $location, $routeParams, mainFactory) {
     $scope.charityCompleted = [];
@@ -264,7 +273,9 @@ ourApp.controller('taskController', function($scope, $location, $routeParams, ma
 
     $scope.user_taskID = [];
     console.log($scope.taskId);
-
+    $scope.logout = function() {
+        mainFactory.logout();
+    }
     mainFactory.getTask($routeParams.id, function(task){
         $scope.task = task;
         // console.log($scope.task);
