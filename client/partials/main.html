@@ -1,4 +1,4 @@
-<div ng-controller="usersController">
+<div >
         <!---//Facebook button code-->
     <div id="fb-root"></div>
     <!-- ******HEADER****** -->
@@ -123,7 +123,7 @@ promote their personal projects</p>
                 <div class="item col-md-6 col-sm-10 col-xs-12">
                     <div class="content">
                         <h3 class="sub-title">Top 10 Volunteers</h3>
-                        <table id="topvolunteers" class="table-striped">
+                        <table id="topvolunteers" class="">
                             <thead>
                                 <tr>
                                     <th>Rank</th>
@@ -132,25 +132,10 @@ promote their personal projects</p>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr ng-repeat="u in topVolunteers">
                                     <td></td>
-                                    <td>Jordan</td>
-                                    <td>70</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Hana</td>
-                                    <td>60</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Helen</td>
-                                    <td>50</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Kelvin</td>
-                                    <td>40</td>
+                                    <td>{{u._id.name}}</td>
+                                    <td>{{u.count}}</td>
                                 </tr>
                             </tbody>
                         </table>

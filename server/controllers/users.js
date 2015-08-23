@@ -84,7 +84,7 @@ module.exports = (function() {
           })
         },
         getRaisedTotal: function(req, res){
-          console.log("TOTAL", req.params.id);
+          // console.log("TOTAL", req.params.id);
           var id = new mongoose.Types.ObjectId(req.params.id);
           // Donation.find({user_tasks: req.params.id}, function(err, donations){
           //   if(err){
@@ -98,7 +98,7 @@ module.exports = (function() {
             if(err){
               console.log(err);
             } else {
-              console.log("DONATIONS", donations);
+              // console.log("DONATIONS", donations);
               res.json(donations);
             }
           })
@@ -113,13 +113,33 @@ module.exports = (function() {
             }
           })
         },
+        getTopVolunteers: function(req, res){
+          UserTask.aggregate([{$group: {_id: "$_user", 'count': {$sum: '$hours'}}}, {$sort: {'count' : -1}}], function(err, top){
+            if(err)
+              console.log(err)
+            else{
+              User.populate(top, {path: "_id"}, function(err, topv){
+                res.json(topv);
+              });
+              // console.log(top);
+              // for(x in top){
+              //   User.findOne({_id: top[x]._id}, function(err, user){
+              //     console.log(user);
+              //     top[x].user = user;
+              //   })
+              // }
+              // console.log(top)
+            }
+              
+          })
+        },
         getHoursId: function(req, res){
           var id = new mongoose.Types.ObjectId(req.params.id);
           UserTask.aggregate([{$match: {_user: id}}, {$group: {_id: null, count: {$sum: "$hours"}}}], function(err, results){
             if(err){
               console.log(err);
             } else {
-              console.log("AGGREGATE", results);
+              // console.log("AGGREGATE", results);
               res.json(results);
             }
           })
