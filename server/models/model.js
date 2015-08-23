@@ -36,7 +36,7 @@ var CharitiesSchema = new mongoose.Schema({
 })
 
 var UserTaskSchema = new mongoose.Schema({
-	user: {type: Schema.ObjectId, ref:"User"},
+	_user: {type: Schema.ObjectId, ref:"User"},
 	task: {type: Schema.ObjectId, ref:"Task"},
 	hours: Number,
 	completion: Boolean
@@ -44,12 +44,12 @@ var UserTaskSchema = new mongoose.Schema({
 
 var DonationSchema = new mongoose.Schema({
 	_sponsor: {type: Schema.ObjectId, ref:"User"},
-	_usertask: {type: Schema.ObjectId, ref:"UserTask"},
+	user_tasks: {type: Schema.ObjectId, ref:"UserTask"},
 	pledge: Number
 })
 
 mongoose.model('UserTask', UserTaskSchema)
 mongoose.model('User', UserSchema);
 mongoose.model('Task', TasksSchema);
-mongoose.model('Donation', DonationsSchema);
+mongoose.model('Donation', DonationSchema);
 mongoose.model('Charity', CharitiesSchema);

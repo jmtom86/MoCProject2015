@@ -12,7 +12,7 @@
 
 
 .theads {
-	max-width: 210px;
+	width: 210px;
 	padding-bottom: 10px;
 }
 
@@ -51,7 +51,7 @@
 }
 
 #upcoming td, #completed td, #charities td, #volunteers td, #upcomingc td, #completedc td{
-	max-width: 330px;
+	width: 330px;
 	padding-right: 60px;
 	padding-bottom: 10px;
 	overflow: hidden;
@@ -60,7 +60,7 @@
 }
 
 #charities td:first{
-	max-width: 200px;
+	width: 200px;
 }
 
 

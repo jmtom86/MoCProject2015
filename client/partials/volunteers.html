@@ -51,12 +51,14 @@
                             </thead>
 
                             <tbody>
-                                <!-- <tr ng-repeat="volunteer in volunteers">
-                                    <td><a href="">{{volunteer.user.name}}</a></td>
-                                    <td>{{volunteer.user.email}}</td>
+<!--
+                                <tr ng-repeat="volunteer in volunteers">
+                                    <td><a href="">{{volunteer._user.name}}</a></td>
+                                    <td>{{volunteer._user.email}}</td>
+
                                     <td ng-show="volunteer.completion == false"></td>
                                     <td ng-show="volunteer.completion == true">{{volunteer.hours}}</td>
-                                    <td>$ 122</td>
+                                    <td>$ {{volunteer.total}}</td>
                                     <td ng-show="task.completion == false"><button class="actionbtn btn btn-cta-primary">Donate</button>  <button class="actionbtn btn btn-cta-primary">Remove</button></td>
                                 </tr> -->
                                 <tr>
@@ -70,6 +72,7 @@
 
                             </tbody>
                         </table>
+                        <h3 class="text-center" ng-bind="message"></h3>
                     </div>
                 </div>
             </div>
