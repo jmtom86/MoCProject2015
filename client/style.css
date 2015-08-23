@@ -1,6 +1,46 @@
 #hello {
 	margin-top: 90px;
 }
+
+
+.theads {
+	max-width: 210px;
+	padding-bottom: 10px;
+}
+
+#completed th {
+	padding-bottom: 10px;
+	width: 210px;
+}
+
+#upcoming td{
+	max-width: 300px;
+	padding-right: 60px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#upcoming td a{
+	display: inline-block;
+}
+
+#completed td{
+	width: 210px;
+
+}
+
+.actionbtn {
+	display: inline-block;
+	margin-right: 20px;
+	vertical-align: top;
+}
+
+#completed {
+	margin-bottom: 100px;
+}
+
+
 #topvolunteers {
 	/*border-spacing: 10px;*/
   counter-reset: serial-number;  /* Set the serial number counter to 0 */
@@ -10,7 +50,7 @@
 	padding-bottom: 20px;
 }
 
-#topvolunteers td ,th{
+#topvolunteers td , #topvolunteers th{
 	padding-right: 70px;
 }
 
@@ -29,7 +69,7 @@
 	padding-bottom: 20px;
 }
 
-#topsponsors td ,th{
+#topsponsors td , #topsponsors th{
 	padding-right: 70px;
 }
 
