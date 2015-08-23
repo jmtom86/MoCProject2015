@@ -51,6 +51,27 @@ module.exports = (function() {
                   res.json(data);
               }
           })
+        },
+        getTask: function(req, res){
+          Task.findOne({_id: req.params.id}, function(err, task){
+            if(err){
+              console.log(err);
+            } else {
+              res.json(task);
+            }
+          })
+        },
+        getVolunteers: function(req, res){
+          console.log(req.params.id);
+          UserTask.find({task: req.params.id}).populate('user')
+          .exec(function(err, usertasks){
+            if(err){
+              console.log(err);
+            } else {
+              console.log(usertasks);
+              res.json(usertasks);
+            }
+          })
         }
 
     }

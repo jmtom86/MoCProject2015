@@ -9,9 +9,6 @@ module.exports = (function() {
       var credentials = req.body['credentials']
       var verified = true;
       var messages = [];
-      console.log(apiUrl);
-      console.log(credentials);
-      console.log(nconf.get('DIGITS_CONSUMER_KEY'))
 
       // Verify the OAuth consumer key.
       if (credentials.indexOf('oauth_consumer_key="CDKMugXuwQAg7HdEbndKe9tp5"') == -1) {
