@@ -118,7 +118,7 @@ promote their personal projects</p>
     <section id="features" class="features section">
         <div class="container text-center">
             <h2 class="title text-center">Leaderboard</h2>
-
+			<p>{{mainpageUsers}}</p>
             <div class="row">
                 <div class="item col-md-6 col-sm-10 col-xs-12">
                     <div class="content">
@@ -132,26 +132,12 @@ promote their personal projects</p>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr ng-repeat="user in mainpageUsers">
                                     <td></td>
-                                    <td>Jordan</td>
-                                    <td>70</td>
-                                </tr>
-                                <tr>
                                     <td></td>
-                                    <td>Hana</td>
-                                    <td>60</td>
+                                    <td>{{user.hours}}</td>
                                 </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Helen</td>
-                                    <td>50</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Kelvin</td>
-                                    <td>40</td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div><!--//content-->
@@ -233,26 +219,26 @@ promote their personal projects</p>
             <div class="contact-inner">
                 <h2 class="title  text-center">Contact</h2>
                 <p class="intro  text-center">I hope you find this Bootstrap template useful. <br />Feel free to get in touch if you have any questions or suggestions.</p>
-                <div class="author-message">                      
+                <div class="author-message">
                     <div class="speech-bubble">
                         <h3 class="sub-title">Want to get more freebies in the future?</h3>
                         <p>I tweet about #UX and #webdev related resources/content at <a href="https://twitter.com/3rdwave_themes" target="_blank">@3rdwave_themes</a></p>
                         <p>If you like what I do, you can follow me on twitter and I will keep you informed about my next free template there :)</p>
-                        <p><strong>[Tip for developers]:</strong> If you take on freelance work you can put a tailored message here about your availability to attract potential clients. Be creative and good luck!</p> 
+                        <p><strong>[Tip for developers]:</strong> If you take on freelance work you can put a tailored message here about your availability to attract potential clients. Be creative and good luck!</p>
                         <div class="source">
                             <span class="name"><a href="https://twitter.com/3rdwave_themes" target="_blank">Xiaoying Riley</a></span>
                             <br />
                             <span class="title">UX/UI Designer</span>
                         </div><!--//source-->
-                    </div><!--//speech-bubble-->                        
+                    </div><!--//speech-bubble-->
                 </div><!--//author-message-->
                 <div class="clearfix"></div>
             </div><!--//contact-inner-->
         </div><!--//container-->
     </section>
     <!-- ******CONTACT****** -->
-    
- 
+
+
 
 
 </div>

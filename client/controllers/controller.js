@@ -1,5 +1,9 @@
 ourApp.controller('usersController', function($scope, $routeParams, mainFactory) {
     var userdata = {};
+    $scope.mainpageUsers = {};
+    mainFactory.getallUsers(function(data) {
+        $scope.mainpageUsers = data;
+    })
     mainFactory.getUserInfo(function(data) {
         $scope.userdata = data;
         console.log($scope.userdata);
@@ -46,6 +50,9 @@ ourApp.controller('tasksController', function($scope, $location, $routeParams, m
         // $scope.charityCompleted = data;
     })
     $scope.volClicked = function(id) {
+        $scope.taskId = id;
+    }
+    $scope.donClicked = function(id) {
         $scope.taskId = id;
     }
     $scope.volPage = function(id) {

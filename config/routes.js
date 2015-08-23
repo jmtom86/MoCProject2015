@@ -23,6 +23,9 @@ module.exports = function(app) {
   app.get('/getUserInfo', function(req, res) {
     users.getUserInfo(req, res);
   })
+  app.get('/getallUsers', function(req, res) {
+    users.getallUsers(req, res);
+  })
   app.post('/digits', function (req, res) {
     digits.authenticate(req, res);
   });
