@@ -4,7 +4,13 @@
  * @romainhuet
  */
 
+
 (function () {
+  var config = {
+    digitsConsumerKey: "CDKMugXuwQAg7HdEbndKe9tp5",
+    digitsConsumerSecret: "IvdSdAP7RK0ExfOArFs4EwT9WK8ieC3JBVGnYWeKOgo0O0k3J1",
+    gaTrackingId: ""
+  }
   /**
    * Initialize Digits for Web as soon as the JavaScript SDK is loaded.
    */
@@ -19,7 +25,8 @@
       });
 
     // Set a click event listener on the Digits button.
-    $('.digits-button').click(onLoginButtonClick);
+    // $('#digits-button').click(onLoginButtonClick);
+    $(document).on('click', '#digits-button', onLoginButtonClick);
   });
 
   /**
@@ -39,7 +46,7 @@
     console.log('Digits login succeeded.');
     var oAuthHeaders = parseOAuthHeaders(loginResponse.oauth_echo_headers);
 
-    setDigitsButton('Signing In…');
+    // setDigitsButton('Signing In…');
     $.ajax({
       type: 'POST',
       url: '/digits',
@@ -53,7 +60,7 @@
    */
   function onLoginFailure(loginResponse) {
     console.log('Digits login failed.');
-    setDigitsButton('Sign In with Phone');
+    // setDigitsButton('Sign In with Phone');
   }
 
   /**
@@ -63,7 +70,7 @@
    */
   function onDigitsSuccess(response) {
     console.log('Digits phone number retrieved.')
-    setDigitsNumber(response.phoneNumber);
+    // setDigitsNumber(response.phoneNumber);
   }
 
   /**
@@ -82,12 +89,12 @@
   }
 
   // Set the Digits button label (and make sure it is not disabled).
-  function setDigitsButton(text) {
-    $('.digits-button').text(text).removeAttr('disabled');
-  }
+  // function setDigitsButton(text) {
+  //   $('#digits-button').text(text).removeAttr('disabled');
+  // }
 
   // Set the Digits phone number (and disable the button).
-  function setDigitsNumber(phoneNumber) {
-    $('.digits-button').text(phoneNumber).attr('disabled', 'disabled');
-  }
+  // function setDigitsNumber(phoneNumber) {
+  //   $('#digits-button').text(phoneNumber).attr('disabled', 'disabled');
+  // }
 })();
