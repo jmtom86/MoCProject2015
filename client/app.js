@@ -11,7 +11,7 @@ ourApp.config( function ($routeProvider) {
     .when('/charities', {
       templateUrl: '/partials/charitypage.html'
     })
-    .when('/volunteers', {
+    .when('/volunteers/:id', {
       templateUrl: '/partials/volunteers.html'
     })
     // .when('/user/:id', {
