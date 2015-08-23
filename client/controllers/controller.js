@@ -12,3 +12,11 @@ ourApp.controller('usersController', function($scope, $routeParams, mainFactory)
     }
 
 })
+ourApp.controller('charityController', function($scope, mainFactory) {
+    var charities = [];
+    mainFactory.getCharities(function(data) {
+        $scope.charities = data;
+    })
+
+
+})

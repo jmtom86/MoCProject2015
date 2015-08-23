@@ -1,5 +1,6 @@
 ourApp.factory('mainFactory', function ($http) {
   var users = [];
+  var charities = [];
   var factory = {};
 
   factory.addUser = function(userdata, callback) {
@@ -13,6 +14,13 @@ ourApp.factory('mainFactory', function ($http) {
     $http.get('/getUserInfo').success(function(output) {
         users = output;
         callback(users);
+    })
+  }
+  factory.getCharities = function(callback) {
+    console.log("adsfads");
+    $http.get('/getCharities').success(function(output) {
+        charities = output;
+        callback(charities);
     })
   }
   // factory.getUserInfo = function(callback) {

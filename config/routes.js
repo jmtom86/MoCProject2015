@@ -18,6 +18,10 @@ module.exports = function(app) {
   app.get('/getUserInfo', function(req, res) {
     users.getUserInfo(req, res);
   })
+  app.get('/getCharities', function(req, res) {
+    console.log("routes");
+    users.getCharities(req, res);
+  })
   // app.get('/getUserInfo/:id', function(req, res) {
   //   question.getUserInfo(req, res);
   // })

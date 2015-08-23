@@ -1,0 +1,17 @@
+<div ng-controller="charityController">
+    <h2>Charity Page</h2>
+    <a href="">Your Profile</a>
+    <p>{{charities}}</p>
+    <table>
+        <thead>
+            <td></td>
+            <td>Charity</td>
+            <td>Description</td>
+        </thead>
+        <tbody ng-repeat="charity in charities">
+            <td></td>
+            <td><a href="">{{charity.title}}</a></td>
+            <td>{{charity.bio}}</td>
+        </tbody>
+    </table>
+</div>
