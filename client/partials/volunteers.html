@@ -19,8 +19,9 @@
                     <ul class="nav navbar-nav">
 
                         <li class="nav-item"><a href="/#charities">Charities</a></li>
-                        <li class="nav-item"><a href="#/userdashboard">Profile</a></li>
+                        <li class="nav-item"><a href="#/userdashboard/{{user._id}}">Profile</a></li>
                         <li class="nav-item last"><a data-toggle="modal" data-target="#login" ng-click="logout()" href="">Logout</a></li>
+
 
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
@@ -40,7 +41,6 @@
             <div class="row">
                 <div class="item col-md-12 col-sm-12 col-xs-12">
                     <div class="content">
-                    <p>{{volunteers}}</p>
                         <table id="volunteers">
                             <thead>
                                 <th class="ctheads">Name</th>
