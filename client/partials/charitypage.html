@@ -2,7 +2,7 @@
     <header class="headeruser navbar-fixed-top">
             <div class="container">
                 <h1 class="logo pull-left">
-                    <a href="#promo">
+                    <a href="/#userdashboard">
                         <span class="logo-title">devAid</span>
                     </a>
                 </h1><!--//logo-->
@@ -23,7 +23,7 @@
                             <li class="nav-item"><a  href="#docs">Docs</a></li>
 
                             <li class="nav-item"><a href="#license">License</a></li>
-                            <li class="nav-item last"><a data-toggle="modal" data-target="#login"  href="">Login</a></li>
+                            <li class="nav-item last"><a data-toggle="modal" data-target="#login"  href="">Logout</a></li>
 
                         </ul><!--//nav-->
                     </div><!--//navabr-collapse-->
@@ -31,7 +31,9 @@
             </div>
         </header>
     <h2>Charity Page</h2>
+    <p>{{charities}}</p>
     <a href="">Your Profile</a>
+    <p>{{charities}}</p>
     <table>
         <thead>
             <td></td>
@@ -39,13 +41,16 @@
             <td>Description</td>
             <td>Email</td>
             <td>Number</td>
+            <td># Upcoming Tasks</td>
         </thead>
+
         <tbody ng-repeat="charity in charities">
             <td></td>
             <td><a href="">{{charity.name}}</a></td>
             <td>{{charity.description}}</td>
             <td>{{charity.email}}</td>
             <td>{{charity.number}}</td>
+            <td>{{charity.count}}</td>
         </tbody>
     </table>
 </div>
