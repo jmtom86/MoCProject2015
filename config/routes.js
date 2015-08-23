@@ -7,7 +7,6 @@ module.exports = function(app) {
   })
 
   app.get('/main', function(req, res){
-  	console.log("MAIN");
   	res.render('mainpage.html');
   })
 

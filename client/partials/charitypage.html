@@ -1,17 +1,20 @@
 <div ng-controller="charityController">
     <h2>Charity Page</h2>
     <a href="">Your Profile</a>
-    <p>{{charities}}</p>
     <table>
         <thead>
             <td></td>
             <td>Charity</td>
             <td>Description</td>
+            <td>Email</td>
+            <td>Number</td>
         </thead>
         <tbody ng-repeat="charity in charities">
             <td></td>
-            <td><a href="">{{charity.title}}</a></td>
-            <td>{{charity.bio}}</td>
+            <td><a href="">{{charity.name}}</a></td>
+            <td>{{charity.description}}</td>
+            <td>{{charity.email}}</td>
+            <td>{{charity.number}}</td>
         </tbody>
     </table>
 </div>

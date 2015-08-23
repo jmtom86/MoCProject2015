@@ -25,19 +25,17 @@ module.exports = (function() {
               if (err) {
                   console.log(err);
               } else {
-                  console.log(data);
                   res.json(data);
               }
           })
         },
         getCharities: function(req, res) {
           // console.log("one user id: ", req.params.id);
-          Charities.find({}).populate('tasks')
+          Charity.find({}).populate('tasks')
           .exec(function(err, data) {
               if (err) {
                   console.log(err);
               } else {
-                  console.log(data);
                   res.json(data);
               }
           })

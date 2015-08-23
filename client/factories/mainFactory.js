@@ -4,7 +4,6 @@ ourApp.factory('mainFactory', function ($http) {
   var factory = {};
 
   factory.addUser = function(userdata, callback) {
-    console.log(userdata);
     $http.post('/addUser', userdata).success(function(data) {
       user = data;
       callback(user);
@@ -17,7 +16,6 @@ ourApp.factory('mainFactory', function ($http) {
     })
   }
   factory.getCharities = function(callback) {
-    console.log("adsfads");
     $http.get('/getCharities').success(function(output) {
         charities = output;
         callback(charities);
