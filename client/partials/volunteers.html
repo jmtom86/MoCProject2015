@@ -1,8 +1,8 @@
-<div ng-controller="charityController">
+<div ng-controller="usersController">
     <header class="headeruser navbar-fixed-top">
         <div class="container">
             <h1 class="logo pull-left">
-                <a href="/#userdashboard">
+                <a href="#/userdashboard">
                     <span class="logo-title">devAid</span>
                 </a>
             </h1><!--//logo-->
@@ -27,28 +27,29 @@
             </nav><!--//main-nav-->
         </div>
     </header>
+        <!--//header-->
     <div class="container">
-        <h2 class="userheaders">Participating Charities</h2>
+        <h2 class="userheaders">Volunteers</h2>
      <!--    <p>{{charities}}</p> -->
         <div class="container">
             <div class="row">
                 <div class="item col-md-12 col-sm-12 col-xs-12">
                     <div class="content">
-                        <table id="charities">
+                        <table id="volunteers">
                             <thead>
-                                <th class="ctheads">Charity</th>
-                                <th class="ctheads">Description</th>
+                                <th class="ctheads">Name</th>
                                 <th class="ctheads">Email</th>
-                                <th class="ctheads">Number</th>
-                                <th class="ctheads"># Upcoming Tasks</th>
+                                <th class="ctheads">Total Tasks Completed</th>
+                                <th class="ctheads">Total Raised</th>
+                                <th class="ctheads">Actions</th>
                             </thead>
 
-                            <tbody ng-repeat="charity in charities">
-                                <td><a href="">{{charity.name}}</a></td>
-                                <td>{{charity.description}}</td>
-                                <td>{{charity.email}}</td>
-                                <td>{{charity.number}}</td>
-                                <td>{{charity.count}}</td>
+                            <tbody>
+                                <td><a href="">Jordan</a></td>
+                                <td>jmtom86@yahoo.com</td>
+                                <td>5</td>
+                                <td>$ 122</td>
+                                <td><button class="actionbtn btn btn-cta-primary">Donate</button>  <button class="actionbtn btn btn-cta-primary">Remove</button></td>
                             </tbody>
                         </table>
                     </div>
@@ -57,5 +58,5 @@
         </div>
         
     </div>
-    
 </div>
+    

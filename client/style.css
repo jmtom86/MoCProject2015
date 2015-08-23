@@ -1,4 +1,4 @@
-#hello {
+.userheaders {
 	margin-top: 90px;
 }
 
@@ -8,27 +8,44 @@
 	padding-bottom: 10px;
 }
 
+.ctheads {
+	max-width: 210px;
+	padding-bottom: 10px;
+}
+.ctheads:first {
+	max-width: 200px;
+	padding-bottom: 10px;
+}
+
+#charities td:nth-child(2) {
+	max-width: 400px;
+	padding-bottom: 10px;
+}
+
+
 #completed th {
 	padding-bottom: 10px;
 	width: 210px;
 }
 
-#upcoming td{
-	max-width: 300px;
+#volunteers th {
+	padding-bottom: 10px;
+	width: 210px;
+}
+
+#upcoming td, #completed td, #charities td, #volunteers td{
+	max-width: 330px;
 	padding-right: 60px;
+	padding-bottom: 10px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 
-#upcoming td a{
-	display: inline-block;
+#charities td:first{
+	max-width: 200px;
 }
 
-#completed td{
-	width: 210px;
-
-}
 
 .actionbtn {
 	display: inline-block;

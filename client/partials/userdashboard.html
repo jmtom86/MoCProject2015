@@ -19,10 +19,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active nav-item sr-only"><a href="#promo">Home</a></li>
                         <li class="nav-item"><a href="/#charities">Charities</a></li>
-                        <li class="nav-item"><a href="#features">Features</a></li>
-                        <li class="nav-item"><a  href="#docs">Docs</a></li>
-
-                        <li class="nav-item"><a href="#license">License</a></li>
+                        <li class="nav-item"><a href="#/userdashboard">Profile</a></li>
                         <li class="nav-item last"><a data-toggle="modal" data-target="#login"  href="">Logout</a></li>
 
                     </ul><!--//nav-->
@@ -32,14 +29,14 @@
     </header>
         <!--//header-->
     <div class="container">
-        <h2 id="hello">Hello {{userdata.name}}!</h2>
+        <h2 class="userheaders">Hello {{userdata.name}}!</h2>
         <h4>User Profile</h4>
         <p>Total Hours: 111</p>
         <p>Total $ Raised: $111</p>
         <p>Total $ Donated: $111</p>
         <div class="container">
             <div class="row">
-                <div class="item col-md-10 col-sm-10 col-xs-12">
+                <div class="item col-md-12 col-sm-12 col-xs-12">
                     <div class="content">
                         <h3 class="sub-title">Upcoming Tasks</h3>
                         <table id="upcoming" >
@@ -66,7 +63,7 @@
             </div>
 
         <div class="row">
-                <div class="item col-md-10 col-sm-10 col-xs-12">
+                <div class="item col-md-12 col-sm-12 col-xs-12">
                     <div class="content">
                         <h3 class="sub-title">Completed Tasks</h3>
                         <table id="completed" >
