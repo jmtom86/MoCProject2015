@@ -1,7 +1,8 @@
 ourApp.controller('usersController', function($scope, $routeParams, mainFactory) {
-    var userdata = [];
+    var userdata = {};
     mainFactory.getUserInfo(function(data) {
         $scope.userdata = data;
+        console.log($scope.userdata);
     })
 
     $scope.addUser = function() {
