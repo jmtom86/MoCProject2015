@@ -21,13 +21,12 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="modal.css">
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
       <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="controllers/controller.js"></script>
     <script type="text/javascript" src="factories/mainFactory.js"></script>
-    <!-- CSS and JS for modal login -->
-    <link rel="stylesheet" type="text/css" href="modal.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -38,6 +37,69 @@
 <body ng-app="ourApp" ng-controller="usersController" data-spy="scroll">
     <div ng-view="">
     </div>
+     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <img class="img-circle" id="img_logo" src="http://bootsnipp.com/img/logo.jpg">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </div>
+                
+          <!-- Begin # DIV Form -->
+          <div id="div-forms">
+          
+            <!-- Begin # Login Form -->
+            <form id="login-form">
+            <div class="modal-body">
+                        <div id="div-login-msg">
+                <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                <span id="text-login-msg">Type your username and password.</span>
+                </div>
+                    <input id="login_username" class="form-control" type="text" placeholder="Username" required>
+                    <input id="login_password" class="form-control" type="password" placeholder="Password" required>
+                    </div>
+                <div class="modal-footer">
+              <div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+              </div>
+                    <div>
+                <button id="login_register_btn" type="button" class="btn btn-link">Register</button>
+              </div>
+                </div>
+            </form>
+            <!-- End # Login Form -->
+              
+            <!-- Begin | Register Form -->
+            <form id="register-form" style="display:none;">
+                <div class="modal-body">
+                        <div id="div-register-msg">
+                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                <span id="text-register-msg">Register an account.</span>
+              </div>
+                        <input id="register_username" class="form-control" type="text" placeholder="Username" required>
+              <input id="register_email" class="form-control" type="text" placeholder="E-Mail" required>
+              <input id="register_password" class="form-control" type="password" placeholder="Password" required>
+                </div>
+                <div class="modal-footer">
+              <div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+              </div>
+              <div>
+                <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
+              </div>
+                </div>
+            </form>
+            <!-- End | Register Form -->
+              
+          </div>
+          <!-- End # DIV Form -->
+                
+            </div>
+        </div>
+    </div>
+    <!-- END # MODAL LOGIN -->
     <script type="text/javascript" src="plugins/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="plugins/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="plugins/jquery.easing.1.3.js"></script>
@@ -47,7 +109,7 @@
     <script type="text/javascript" src="main.js"></script>
     <script id="digits-sdk" src="https://cdn.digits.com/1/sdk.js" async></script>
     <script type="text/javascript" src="digits.js"></script>
-    <!-- // <script type="text/javascript" src="modal.js"></script> -->
+    <script type="text/javascript" src="modal.js"></script>
 </body>
 </html>
 

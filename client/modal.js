@@ -12,7 +12,6 @@ $(function() {
     console.log("here");
     var $formLogin = $('#login-form');
     console.log($formLogin);
-    var $formLost = $('#lost-form');
     var $formRegister = $('#register-form');
     var $divForms = $('#div-forms');
     var $modalAnimateTime = 300;
@@ -29,15 +28,6 @@ $(function() {
                     msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
                 } else {
                     msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
-                }
-                return false;
-                break;
-            case "lost-form":
-                var $ls_email=$('#lost_email').val();
-                if ($ls_email == "ERROR") {
-                    msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "error", "glyphicon-remove", "Send error");
-                } else {
-                    msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "success", "glyphicon-ok", "Send OK");
                 }
                 return false;
                 break;
@@ -59,13 +49,9 @@ $(function() {
     });
     
     $('#login_register_btn').click( function () { modalAnimate($formLogin, $formRegister) });
-    $('#register_login_btn').click( function () { 
-        console.log("CLICKED BUTTON");
-        modalAnimate($formRegister, $formLogin); });
-    $('#login_lost_btn').click( function () { modalAnimate($formLogin, $formLost); });
+    $('#register_login_btn').click( function () { modalAnimate($formRegister, $formLogin); });
     $('#lost_login_btn').click( function () { modalAnimate($formLost, $formLogin); });
     $('#lost_register_btn').click( function () { modalAnimate($formLost, $formRegister); });
-    $('#register_lost_btn').click( function () { modalAnimate($formRegister, $formLost); });
     
     function modalAnimate ($oldForm, $newForm) {
         var $oldH = $oldForm.height();
