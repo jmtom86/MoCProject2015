@@ -46,6 +46,35 @@ ourApp.factory('mainFactory', function ($http) {
 
   factory.getVolunteers = function(id, callback){
   	$http.get('/volunteers/'+id).success(function(output){
+  		for(x in output){
+  			output[x].total = 0;
+  		}
+  		console.log("OUTPUT", output);
+  		callback(output);
+  	})
+  }
+
+  factory.getTotal = function(id, volunteer, callback){
+  	$http.get('/raisedtotal/'+id).success(function(output){
+  		console.log(volunteer);
+  		console.log("FACTORY", output)
+  		var sum = 0;
+  		for(x in output){
+  			console.log(output[x].pledge);
+  			sum += output[x].pledge * volunteer.hours;
+  		}
+  		callback(sum);
+  	})
+  }
+
+  factory.getAllTasks = function(id, callback){
+  	$http.get('/alltasks/'+id).success(function(output){
+  		callback(output);
+  	})
+  }
+
+  factory.getHoursId = function(id, callback){
+  	$http.get('/totalhoursbyid/'+id).success(function(output){
   		callback(output);
   	})
   }
