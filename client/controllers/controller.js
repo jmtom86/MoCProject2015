@@ -28,10 +28,11 @@ ourApp.controller('charityController', function($scope, mainFactory) {
         $scope.charities = data;
     })
 })
-ourApp.controller('tasksController', function($scope, $routeParams, mainFactory) {
+ourApp.controller('tasksController', function($scope, $location, $routeParams, mainFactory) {
     $scope.charityCompleted = [];
     $scope.charityUpcoming = [];
     $scope.charityInfo = [];
+    $scope.taskId = [];
     mainFactory.getOneCharity($routeParams.id, function(data) {
         $scope.charityInfo = data;
         for (i of data.tasks) {
@@ -44,4 +45,11 @@ ourApp.controller('tasksController', function($scope, $routeParams, mainFactory)
         }
         // $scope.charityCompleted = data;
     })
+    $scope.volClicked = function(id) {
+        $scope.taskId = id;
+    }
+    $scope.volPage = function(id) {
+        console.log("volPAGE: ", id);
+        $location.path('/volunteers/'+id);
+    }
 })
