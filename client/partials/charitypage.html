@@ -31,9 +31,7 @@
             </div>
         </header>
     <h2>Charity Page</h2>
-    <p>{{charities}}</p>
     <a href="">Your Profile</a>
-    <p>{{charities}}</p>
     <table>
         <thead>
             <td></td>
@@ -46,7 +44,7 @@
 
         <tbody ng-repeat="charity in charities">
             <td></td>
-            <td><a href="">{{charity.name}}</a></td>
+            <td><a href="/#charityTasks/{{charity._id}}">{{charity.name}}</a></td>
             <td>{{charity.description}}</td>
             <td>{{charity.email}}</td>
             <td>{{charity.number}}</td>

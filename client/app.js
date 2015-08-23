@@ -11,9 +11,9 @@ ourApp.config( function ($routeProvider) {
     .when('/charities', {
       templateUrl: '/partials/charitypage.html'
     })
-    // .when('/user/:id', {
-    //   templateUrl: '/partials/user.html'
-    // })
+    .when('/charityTasks/:id', {
+      templateUrl: '/partials/charitytasks.html'
+    })
     .otherwise({
       redirectTo: '/mainpage'
     });

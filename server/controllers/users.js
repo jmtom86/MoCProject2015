@@ -39,6 +39,18 @@ module.exports = (function() {
                   res.json(data);
               }
           })
+        },
+        getOneCharity: function(req, res) {
+          // console.log("one user id: ", req.params.id);
+          Charity.findOne({_id: req.params.id}).populate('tasks')
+          .exec(function(err, data) {
+              if (err) {
+                  console.log(err);
+              } else {
+                  console.log("here: ", data);
+                  res.json(data);
+              }
+          })
         }
 
     }
