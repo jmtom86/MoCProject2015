@@ -1,10 +1,10 @@
-ourApp.controller('usersController', function ($scope, $location, mainFactory) {
-
-  $scope.logIn = function () {
-    var user = { name: $scope.name };
-    mainFactory.logIn(user, function () {
-      $location.path('/dashboard');
-    });
-  }
+ourApp.controller('usersController', function($scope, mainFactory) {
+    var userdata = [];
+    $scope.addUser = function() {
+        console.log($scope.newUser);
+        mainFactory.addUser($scope.newUser, function(data) {
+        });
+        $scope.newUser = {};
+    }
 
 })

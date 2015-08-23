@@ -1,5 +1,6 @@
-<div data-spy="scroll">
+<div ng-controller="usersController" data-spy="scroll">
     	<div id="fb-root"></div>
+<<<<<<< HEAD
 	    <script>$(function() {
 
     $('#login-form-link').click(function(e) {
@@ -18,15 +19,28 @@
 	});
 
 });</script>
-	    
-	    <!-- ******HEADER****** --> 
-	    <header id="header" class="header">  
-	        <div class="container">            
+
+	    <!-- ******HEADER****** -->
+	    <header id="header" class="header">
+	        <div class="container">
+=======
+	    <script>(function(d, s, id) {
+	      var js, fjs = d.getElementsByTagName(s)[0];
+	      if (d.getElementById(id)) return;
+	      js = d.createElement(s); js.id = id;
+	      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+	      fjs.parentNode.insertBefore(js, fjs);
+	    }(document, 'script', 'facebook-jssdk'));</script>
+
+	    <!-- ******HEADER****** -->
+	    <header id="header" class="header">
+	        <div class="container">
+>>>>>>> Hana
 	            <h1 class="logo pull-left">
 	                <a class="scrollto" href="#promo">
 	                    <span class="logo-title">devAid</span>
 	                </a>
-	            </h1><!--//logo-->              
+	            </h1><!--//logo-->
 	            <nav id="main-nav" class="main-nav navbar-right" role="navigation">
 	                <div class="navbar-header">
 	                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
@@ -35,24 +49,29 @@
 	                        <span class="icon-bar"></span>
 	                        <span class="icon-bar"></span>
 	                    </button><!--//nav-toggle-->
-	                </div><!--//navbar-header-->            
+	                </div><!--//navbar-header-->
 	                <div class="navbar-collapse collapse" id="navbar-collapse">
 	                    <ul class="nav navbar-nav">
 	                        <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
 	                        <li class="nav-item"><a class="scrollto" href="#about">About</a></li>
 	                        <li class="nav-item"><a class="scrollto" href="#features">Features</a></li>
 	                        <li class="nav-item"><a class="scrollto" href="#docs">Docs</a></li>
-	                        <li class="nav-item"><a class="scrollto" href="#license">License</a></li>                        
+
+	                        <li class="nav-item"><a class="scrollto" href="#license">License</a></li>
 	                        <li class="nav-item last"><a data-toggle="modal" data-target="#login" class="scrollto" href="">Login</a></li>
+
 	                    </ul><!--//nav-->
 	                </div><!--//navabr-collapse-->
 	            </nav><!--//main-nav-->
 	        </div>
 	    </header><!--//header-->
-	    
+
 	    <!-- ******PROMO****** -->
 	    <section id="promo" class="promo section offset-header">
 	        <div class="container text-center">
+	        	<!-- <p>Name: <input type="text" ng-model="newUser.name"></p>
+	        	<p>Email: <input type="text" ng-model="newUser.email"></p>
+	        	<button ng-click="addUser()">Add</button> -->
 	            <h2 class="title">dev<span class="highlight">Aid</span></h2>
 	            <p class="intro">A free mobile-friendly Bootstrap theme designed to help developers
 	promote their personal projects</p>
@@ -61,14 +80,14 @@
 	                <a class="btn btn-cta-primary" href="http://themes.3rdwavemedia.com/website-templates/devaid-free-bootstrap-theme-developers/" target="_blank">Download</a>
 	            </div>
 	            <div class="meta">
-	            	
+
 	            </div>
-	            
+
 	        </div><!--//container-->
-	        
+
 	    </section><!--//promo-->
-	    
-	    <!-- ******ABOUT****** --> 
+
+	    <!-- ******ABOUT****** -->
 	    <section id="about" class="about section">
 	        <div class="container">
 	            <h2 class="title text-center">Leaderboard</h2>
@@ -146,12 +165,53 @@
 	                        </table>
 	                    </div><!--//content-->
 	                </div><!--//item-->
-	                <!--//item-->               
-	            </div><!--//row-->            
+<<<<<<< HEAD
+	                <!--//item-->
+	            </div><!--//row-->
+=======
+	                <div class="item col-md-4 col-sm-6 col-xs-12">
+	                    <div class="icon-holder">
+	                        <i class="fa fa-crosshairs"></i>
+	                    </div>
+	                    <div class="content">
+	                        <h3 class="sub-title">UX-centred</h3>
+	                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
+	                    </div><!--//content-->
+	                </div><!--//item-->
+	                <div class="clearfix visible-md"></div>
+	                <div class="item col-md-4 col-sm-6 col-xs-12">
+	                    <div class="icon-holder">
+	                        <i class="fa fa-tablet"></i>
+	                    </div>
+	                    <div class="content">
+	                        <h3 class="sub-title">Mobile-friendly</h3>
+	                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
+	                    </div><!--//content-->
+	                </div><!--//item-->
+	                <div class="item col-md-4 col-sm-6 col-xs-12">
+	                    <div class="icon-holder">
+	                        <i class="fa fa-code"></i>
+	                    </div>
+	                    <div class="content">
+	                        <h3 class="sub-title">Easy to customise</h3>
+	                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
+	                    </div><!--//content-->
+	                </div><!--//item-->
+	                <div class="item col-md-4 col-sm-6 col-xs-12">
+	                    <div class="icon-holder">
+	                        <i class="fa fa-coffee"></i>
+	                    </div>
+	                    <div class="content">
+	                        <h3 class="sub-title">LESS files included</h3>
+	                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
+	                    </div><!--//content-->
+	                </div><!--//item-->
+	            </div><!--//row-->
+>>>>>>> Hana
 	        </div><!--//container-->
 	    </section><!--//about-->
-	    
-	    <!-- ******FEATURES****** --> 
+
+	    <!-- ******FEATURES****** -->
 	    <section id="features" class="features section">
 	        <div class="container text-center">
 	            <h2 class="title">Features</h2>
@@ -166,12 +226,12 @@
 	            </ul>
 	        </div><!--//container-->
 	    </section><!--//features-->
-	    
-	    <!-- ******DOCS****** --> 
+
+	    <!-- ******DOCS****** -->
 	    <section id="docs" class="docs section">
 	        <div class="container">
 	            <div class="docs-inner">
-	            <h2 class="title text-center">Get Started</h2>            
+	            <h2 class="title text-center">Get Started</h2>
 	            <div class="block">
 	                <h3 class="sub-title text-center">HTML</h3>
 	                <p><a href="http://prismjs.com/" target="_blank">PrismJS</a> is used as the syntax highlighter here.</p>
@@ -190,16 +250,16 @@
 	                     </code></pre>
 	                </div><!--//code-block-->
 	            </div><!--//block-->
-	            
+
 	            <div class="block">
 	                <h3 class="sub-title text-center">CSS</h3>
 	                <p>Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</p>
-	                
+
 	                <div class="code-block">
 	                    <!--//Use Prismjs - http://prismjs.com/index.html#basic-usage -->
 	                    <pre>
 	    <code class="language-css">
-	    /*   
+	    /*
 	     * Template Name: devAid - Responsive Website Template for developers
 	     * Version: 1.0
 	     * Author: Xiaoying Riley at 3rd Wave Media
@@ -216,7 +276,7 @@
 	    </code></pre>
 	                </div><!--//code-block-->
 	            </div><!--//block-->
-	            
+
 	            <div class="block">
 	                <h3 class="sub-title text-center">JavaScript</h3>
 	                <p>Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit ligula eget dolor.</p>
@@ -229,7 +289,7 @@
 	    }
 	                    </code></pre>
 	                </div><!--//code-block-->
-	            </div><!--//block-->   
+	            </div><!--//block-->
 	            <div class="block">
 	                <h3 class="sub-title text-center">Full Documentation</h3>
 	                <p>If your documentation is very long you can host the full docs page (including FAQ etc) on GitHub and provide a Call to Action button below to direct users there.</p>
@@ -237,12 +297,12 @@
 	                    <a class="btn btn-cta-primary" href="https://github.com/twbs/bootstrap" target="_blank">More on GitHub</a>
 	                </p>
 	            </div><!--//block-->
-	            
-	            </div><!--//docs-inner-->         
+
+	            </div><!--//docs-inner-->
 	        </div><!--//container-->
 	    </section><!--//features-->
-	    
-	    <!-- ******LICENSE****** --> 
+
+	    <!-- ******LICENSE****** -->
 	    <section id="license" class="license section">
 	        <div class="container">
 	            <div class="license-inner">
@@ -252,12 +312,12 @@
 	                    <p><strong>[Tip for developers]:</strong> If your project is open source, you might want to put a <a href="https://www.paypal.com/us/cgi-bin/?cmd=_donate-intro-outside" target="_blank">PayPal "Donate" button</a> below so your users can express their gratitude. If your project is commercial, you can put a <a href="https://www.paypal.com/us/cgi-bin/webscr?cmd=_singleitem-intro-outside" target="_blank">PayPal "Buy Now" button</a> instead.</p>
 	                </div><!--//info-->
 	                <div class="cta-container">
-	                    <div class="speech-bubble">                    
+	                    <div class="speech-bubble">
 	                        <p class="intro">If you are feeling generous and want to show your support to Xiaoying, you can buy her a beer or coffee via the PayPal donate button below. :)</p>
 	                        <div class="icon-holder  text-center"><i class="fa fa-smile-o"></i></div>
 	                    </div><!--//speech-bubble-->
 	                    <div class="btn-container  text-center">
-	                        <!--//You need to generate your own PayPal button - https://www.paypal.com/us/cgi-bin/?cmd=_donate-intro-outside -->         
+	                        <!--//You need to generate your own PayPal button - https://www.paypal.com/us/cgi-bin/?cmd=_donate-intro-outside -->
 	                        <!--PayPal generated code starts-->
 	                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 	                        <input type="hidden" name="cmd" value="_s-xclick">
@@ -265,38 +325,39 @@
 	                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 	                        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 	                        </form>
-	                        <!--//PayPal generated code ends-->                    
-	                        
+	                        <!--//PayPal generated code ends-->
+
 	                    </div><!--//btn-container-->
 	                </div><!--//cta-container-->
 	            </div><!--//license-inner-->
 	        </div><!--//container-->
 	    </section><!--//how-->
-	    
-	    <!-- ******CONTACT****** --> 
+
+	    <!-- ******CONTACT****** -->
 	    <section id="contact" class="contact section has-pattern">
 	        <div class="container">
 	            <div class="contact-inner">
 	                <h2 class="title  text-center">Contact</h2>
 	                <p class="intro  text-center">I hope you find this Bootstrap template useful. <br />Feel free to get in touch if you have any questions or suggestions.</p>
-	                <div class="author-message">                      
+	                <div class="author-message">
 	                    <div class="speech-bubble">
 	                        <h3 class="sub-title">Want to get more freebies in the future?</h3>
-	                        <p>I tweet about #UX and #webdev related resources/content at <a href="https://twitter.com/3rdwave_themes" target="_blank">@3rdwave_themes</a> 
+	                        <p>I tweet about #UX and #webdev related resources/content at <a href="https://twitter.com/3rdwave_themes" target="_blank">@3rdwave_themes</a>
 	                        <p>If you like what I do, you can follow me on twitter and I will keep you informed about my next free template there :)</p>
-	                        <p><strong>[Tip for developers]:</strong> If you take on freelance work you can put a tailored message here about your availability to attract potential clients. Be creative and good luck!</p> 
+	                        <p><strong>[Tip for developers]:</strong> If you take on freelance work you can put a tailored message here about your availability to attract potential clients. Be creative and good luck!</p>
 	                        <div class="source">
 	                            <span class="name"><a href="https://twitter.com/3rdwave_themes" target="_blank">Xiaoying Riley</a></span>
 	                            <br />
 	                            <span class="title">UX/UI Designer</span>
 	                        </div><!--//source-->
-	                    </div><!--//speech-bubble-->                        
+	                    </div><!--//speech-bubble-->
 	                </div><!--//author-message-->
 	                <div class="clearfix"></div>
 	              <!--//info-->
 	            </div><!--//contact-inner-->
 	        </div><!--//container-->
-	    </section><!--//contact-->  
+<<<<<<< HEAD
+	    </section><!--//contact-->
     </div>
     <div class="modal fade" id="login" role="dialog">
         <div class="modal-dialog">
@@ -387,3 +448,7 @@
 
         </div>
     </div>
+=======
+	    </section><!--//contact-->
+    </div>
+>>>>>>> Hana
