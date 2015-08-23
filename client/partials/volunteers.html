@@ -54,7 +54,7 @@
                             <tbody>
 
                                 <tr ng-repeat="volunteer in volunteers">
-                                    <td><a href="">{{volunteer._user.name}}</a></td>
+                                    <td><a href="#/userdashboard/{{volunteer._user._id}}">{{volunteer._user.name}}</a></td>
                                     <td>{{volunteer._user.email}}</td>
 
                                     <td ng-show="volunteer.completion == false">3</td>

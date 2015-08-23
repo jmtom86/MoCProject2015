@@ -102,7 +102,7 @@ module.exports = (function() {
             if(err){
               console.log(err);
             } else {
-              console.log("CONTORLLER: ", usertasks);
+              // console.log("CONTORLLER: ", usertasks);
               res.json(usertasks);
             }
           })
@@ -180,6 +180,20 @@ module.exports = (function() {
             } else {
               // console.log("AGGREGATE", results);
               res.json(results);
+            }
+          })
+        },
+        addusertask: function(req, res){
+          var utask = new UserTask(req.body);
+          utask.completion = false;
+          utask.hours = 0;
+          utask.donations = [];
+          console.log("NEW U TASK", utask);
+          utask.save(function(err, result){
+            if(err){
+              console.log(err);
+            } else {
+              res.json(result);
             }
           })
         }

@@ -41,6 +41,10 @@ module.exports = function(app) {
     digits.login(req, res);
   });
 
+  app.post('/addusertask', function(req, res){
+    users.addusertask(req, res);
+  })
+
   app.get('/gettask/:id', function(req,res){
     users.getTask(req, res);
   })

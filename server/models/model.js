@@ -36,6 +36,7 @@ var CharitiesSchema = new mongoose.Schema({
 var UserTaskSchema = new mongoose.Schema({
 	_user: {type: Schema.ObjectId, ref:"User"},
 	task: {type: Schema.ObjectId, ref:"Task"},
+	charity: {type: Schema.ObjectId, ref:"Charity"},
 	hours: Number,
 	completion: Boolean,
 	donations: [{type: Schema.Types.ObjectId, ref:"Donation"}]

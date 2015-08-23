@@ -50,6 +50,12 @@ ourApp.factory('mainFactory', function ($http, $location) {
         callback(charities);
     })
   }
+
+  factory.addUserTask = function(info, callback){
+  	$http.post('/addusertask', info).success(function(output){
+  		callback(output);
+  	})
+  }
   factory.getUserInfo = function(id, callback) {
     $http.get('/getUserInfo/'+id).success(function(output) {
         users = output;

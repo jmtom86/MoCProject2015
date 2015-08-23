@@ -272,6 +272,12 @@ ourApp.controller('tasksController', function($scope, $location, $routeParams, m
         console.log("volPAGE: ", id);
         $location.path('/volunteers/'+id);
     }
+    $scope.addUserTask = function(id){
+        var usertask = {_user: $scope.user._id, charity: $scope.charityInfo._id, task: $scope.taskId };
+        mainFactory.addUserTask(usertask, function(data){
+            $location.path('/volunteers/'+id);
+        })
+    }
 })
 
 ourApp.controller('taskController', function($scope, $location, $routeParams, mainFactory){
