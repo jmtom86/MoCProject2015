@@ -13,8 +13,19 @@ ourApp.controller('usersController', function($scope, $routeParams, mainFactory)
 
 })
 ourApp.controller('charityController', function($scope, mainFactory) {
-    var charities = [];
+    $scope.charities = [];
+
     mainFactory.getCharities(function(data) {
+        // console.log(data);
+        for (i in data) {
+            data[i].count = 0
+            console.log(data[i].tasks[i].completion);
+            for (x in data[i].tasks) {
+                if (data[i].tasks[x].completion == false) {
+                    data[i].count++;
+                }
+            }
+        }
         $scope.charities = data;
     })
 
