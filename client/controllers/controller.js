@@ -198,6 +198,9 @@ ourApp.controller('charityController', function ($scope, mainFactory) {
         }
         $scope.charities = data;
     })
+    $scope.logout = function() {
+        mainFactory.logout();
+    }
 })
 ourApp.controller('tasksController', function($scope, $location, $routeParams, mainFactory) {
     $scope.charityCompleted = [];
@@ -242,7 +245,9 @@ ourApp.controller('taskController', function($scope, $location, $routeParams, ma
 
     $scope.user_taskID = [];
     console.log($scope.taskId);
-
+    $scope.logout = function() {
+        mainFactory.logout();
+    }
     mainFactory.getTask($routeParams.id, function(task){
         $scope.task = task;
         // console.log($scope.task);
