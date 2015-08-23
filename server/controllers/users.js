@@ -17,6 +17,28 @@ module.exports = (function() {
               res.json(results);
             }
           })
+        },
+        getUserInfo: function(req, res) {
+          // console.log("one user id: ", req.params.id);
+          User.findOne({_id: "55d92df4e4b0550b9e2b460b"}).populate('tasks')
+          .exec(function(err, data) {
+              if (err) {
+                  console.log(err);
+              } else {
+                  res.json(data);
+              }
+          })
+        },
+        getCharities: function(req, res) {
+          // console.log("one user id: ", req.params.id);
+          Charity.find({}).populate('tasks')
+          .exec(function(err, data) {
+              if (err) {
+                  console.log(err);
+              } else {
+                  res.json(data);
+              }
+          })
         }
 
     }

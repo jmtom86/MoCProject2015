@@ -5,13 +5,16 @@ ourApp.config( function ($routeProvider) {
     .when('/', {
       templateUrl: '/partials/main.html'
     })
-    // .when('/dashboard', {
-    //   templateUrl: '/partials/dashboard.html'
-    // })
+    .when('/userdashboard', {
+      templateUrl: '/partials/userdashboard.html'
+    })
+    .when('/charities', {
+      templateUrl: '/partials/charitypage.html'
+    })
     // .when('/user/:id', {
     //   templateUrl: '/partials/user.html'
     // })
     .otherwise({
-      redirectTo: '/index'
+      redirectTo: '/mainpage'
     });
 });

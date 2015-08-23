@@ -1,0 +1,88 @@
+<div ng-controller="usersController">
+    <header class="headeruser navbar-fixed-top">
+        <div class="container">
+            <h1 class="logo pull-left">
+                <a href="#promo">
+                    <span class="logo-title">devAid</span>
+                </a>
+            </h1><!--//logo-->
+            <nav id="main-nav" class="main-nav navbar-right" >
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button><!--//nav-toggle-->
+                </div><!--//navbar-header-->
+                <div class="navbar-collapse collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active nav-item sr-only"><a href="#promo">Home</a></li>
+                        <li class="nav-item"><a href="#about">About</a></li>
+                        <li class="nav-item"><a href="#features">Features</a></li>
+                        <li class="nav-item"><a  href="#docs">Docs</a></li>
+
+                        <li class="nav-item"><a href="#license">License</a></li>
+                        <li class="nav-item last"><a data-toggle="modal" data-target="#login"  href="">Login</a></li>
+
+                    </ul><!--//nav-->
+                </div><!--//navabr-collapse-->
+            </nav><!--//main-nav-->
+        </div>
+    </header>
+        <!--//header-->
+    <div class="container">
+        <h2 id="hello">Hello {{userdata.name}}!</h2>
+        <h4>User Profile</h4>
+        <p>Total Hours: 111</p>
+        <p>Total $ Raised: $111</p>
+        <p>Total $ Donated: $111</p>
+        <div class="container">
+            <div class="row">
+                <div class="item col-md-6 col-sm-10 col-xs-12">
+                    <div class="content">
+                        <h3 class="sub-title">Upcoming Tasks</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td><b>Task</b></td>
+                                    <td><b>Charity</b></td>
+                                </tr>
+
+                            </thead>
+                            <tbody ng-repeat="user in userdata">
+                                <tr>
+                                    <td></td>
+                                    <td>{{user.tasks}}</td>
+                                    <td>{{user.tasks.charity}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        <div class="row">
+                <div class="item col-md-6 col-sm-10 col-xs-12">
+                    <div class="content">
+                        <h3 class="sub-title">Completed Tasks</h3>
+                        <table>
+                            <thead>
+                                <td></td>
+                                <td>Task</td>
+                                <td>Charity</td>
+                            </thead>
+                            <tbody>
+                                <td></td>
+                                <td>Donate Blood</td>
+                                <td>Red Cross</td>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/#charities">Charity Page</a>
+    </div>
+</div>
+    
