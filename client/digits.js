@@ -79,7 +79,7 @@
    */
   function onFailure(loginResponse) {
     console.log('Digits login failed.');
-    setDigitsButton('Try Again');
+    // setDigitsButton('Try Again');
   }
 
   /**

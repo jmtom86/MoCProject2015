@@ -122,7 +122,7 @@ ourApp.controller('usersController', function ($scope, $location, $routeParams, 
    */
   function onFailure(loginResponse) {
     console.log('Digits login failed.');
-    setDigitsButton('Try Again');
+    // setDigitsButton('Try Again');
   }
 
   /**
@@ -169,7 +169,7 @@ ourApp.controller('usersController', function ($scope, $location, $routeParams, 
 
   // Set the Digits button label (and make sure it is not disabled).
   function setDigitsButton(text) {
-    $('#digits-register').text(text).removeAttr('disabled');
+    $('#digits-login').text(text).removeAttr('disabled');
   }
 })
 ourApp.controller('charityController', function ($scope, mainFactory) {
