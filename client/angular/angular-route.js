@@ -15,7 +15,7 @@
  * The `ngRoute` module provides routing and deeplinking services and directives for angular apps.
  *
  * ## Example
- * See {@link ngRoute.$route#example $route} for an example of configuring and using `ngRoute`.
+ * See {@link ngRoute.$route#exampl $route} for an example of configuring and using `ngRoute`.
  *
  *
  * <div doc-module-components="ngRoute"></div>
